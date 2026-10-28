@@ -1,0 +1,11 @@
+/kaynak/
+/supabase/
+/testler/
+/icerik-paketi/
+/yedekler/
+*.sql
+*.bak
+.env
+.env.*
+__pycache__/
+node_modules/
