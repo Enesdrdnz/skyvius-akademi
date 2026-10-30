@@ -2,8 +2,9 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27; &#x27;sha256-BaSlWDwqgg+U4bMOSz9qGSgvx2rxz+eL7YsuVcH57Uo=&#x27; &#x27;sha256-Q9uZPKshL/Y9de+p3bW/OL2NbXEdfpdcxwZcGlxuYuY=&#x27; &#x27;sha256-Fk+qdXhOpeUfIZAE/GOsh5ONDLPT6JzlfgsG2EE1mdA=&#x27; https://www.youtube.com https://www.youtube-nocookie.com; script-src-attr &#x27;none&#x27;; style-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;; font-src &#x27;self&#x27;; img-src &#x27;self&#x27; data: blob: https://i.ytimg.com; connect-src &#x27;self&#x27; https://xwgowagywzozzeebmcyw.supabase.co https://www.youtube.com https://www.youtube-nocookie.com; frame-src https://www.youtube-nocookie.com https://www.youtube.com; media-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;self&#x27;">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27; &#x27;sha256-BaSlWDwqgg+U4bMOSz9qGSgvx2rxz+eL7YsuVcH57Uo=&#x27; &#x27;sha256-Q9uZPKshL/Y9de+p3bW/OL2NbXEdfpdcxwZcGlxuYuY=&#x27; &#x27;sha256-MpJTzLxpCKoG0OBS52S8pUryAcPhzqXiaMHOXK1FiqQ=&#x27; https://www.youtube.com https://www.youtube-nocookie.com; script-src-attr &#x27;none&#x27;; style-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;; font-src &#x27;self&#x27;; img-src &#x27;self&#x27; data: blob: https://i.ytimg.com; connect-src &#x27;self&#x27; https://xwgowagywzozzeebmcyw.supabase.co https://www.youtube.com https://www.youtube-nocookie.com; frame-src https://www.youtube-nocookie.com https://www.youtube.com; media-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;self&#x27;">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+
 
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Skyvius Akademi</title>
@@ -936,6 +937,15 @@ footer .foot a:hover{color:var(--text)}
 @media (max-width:640px){
   :root .q fieldset{padding:12px}
 }
+/* Atölye: birebir desteğin yanında ayrı deney alanı bağlantısı. */
+.workshop-link{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;text-decoration:none;padding:8px 12px!important;border:1px solid #648d9a!important;border-radius:999px;background:rgba(89,155,169,.12);font-size:13px!important;color:var(--text)!important}
+.workshop-link small{font:700 8px/1 var(--body);letter-spacing:.08em;color:#8bbcc5}.workshop-link:hover{background:rgba(89,155,169,.24)}.tools .workshop-link{display:none}
+@media(max-width:1100px){.nav .workshop-link{display:none}.tools .workshop-link{display:inline-flex;padding:8px 10px!important;font-size:12px!important}.tools .workshop-link small{display:none}}
+@media(max-width:540px){.tools .workshop-link{font-size:10px!important;padding:7px!important}.tools .workshop-link>span{display:none}}
+.yh-atolye{display:flex;align-items:center;gap:18px;margin:18px 0 28px;padding:21px 24px;border:1px solid #4f8390;border-radius:12px;background:linear-gradient(115deg,rgba(61,123,137,.16),rgba(61,123,137,.04));color:var(--text);text-decoration:none}.yh-atolye-icon{font-size:32px;color:#8bbcc5}.yh-atolye strong{display:block;font-size:19px;font-weight:600;margin-bottom:7px}.yh-atolye div>span{font-size:13px;color:var(--muted)}.yh-atolye b{margin-left:auto;white-space:nowrap;font-size:14px;color:#8bbcc5}.yh-atolye:hover{border-color:#92c7d3;background:rgba(61,123,137,.20)}@media(max-width:600px){.yh-atolye{flex-wrap:wrap;padding:18px;gap:12px}.yh-atolye strong{font-size:17px}.yh-atolye div{flex:1}.yh-atolye div>span{font-size:12px;line-height:1.6}.yh-atolye b{margin-left:44px}}
+:root .nav a:not(.paid):not(.workshop-link){font-size:13px;padding:10px 5px}:root .nav a.paid{font-size:13px;padding:8px 10px;margin-left:5px}.nav .workshop-link{font-size:12px!important;padding:8px 9px!important}.nav .workshop-link small{display:none}
+@media(max-width:1100px){.bar-in{flex-wrap:wrap;gap:0 10px;padding-top:8px;padding-bottom:2px;min-height:0}.brand{order:1}.tools{order:2;margin-left:auto}.nav{order:3;flex-basis:100%;margin-inline:-6px}.nav .ayr,.nav .paid{display:none}.tools .paid{display:block}.searchbtn{min-width:0}.searchbtn span,.searchbtn kbd{display:none}}
+.yh-atolye{padding:16px 20px}.yh-atolye-visual{display:block;flex:none;width:144px;height:86px;overflow:hidden;border-radius:6px;background:#dce2dd;border:1px solid #678c8d}.yh-atolye-visual img{display:block;width:100%;height:100%;object-fit:cover;transform:scale(2.6);transform-origin:center bottom}@media(max-width:600px){.yh-atolye-visual{width:88px;height:66px}.yh-atolye b{margin-left:100px}}
 </style>
 </head>
 <body>
@@ -950,9 +960,11 @@ footer .foot a:hover{color:var(--text)}
       <a href="#rehber" data-v="rehber">Nasıl çalışılır</a>
       <a href="#sorular" data-v="sorular">Soru-cevap</a>
       <span class="ayr" aria-hidden="true"></span>
+      <a href="atolye/" class="workshop-link" title="Parçaları seç, kendi İHA’nı kur ve dene"><span aria-hidden="true">✣</span> Online Atölye <small>DENE</small></a>
       <a href="#destek" data-v="destek" class="paid"><i>Birebir destek</i></a>
     </nav>
     <div class="tools">
+      <a href="atolye/" class="workshop-link" title="Parçaları seç, kendi İHA’nı kur ve dene"><span aria-hidden="true">✣</span> Online Atölye <small>DENE</small></a>
       <a href="#destek" data-v="destek" class="paid"><i>Birebir destek</i></a>
       <button type="button" class="searchbtn" id="ara" aria-label="Ara (Ctrl+K)" title="Ara (Ctrl+K)">
         <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4 4" stroke-linecap="round"/></svg>
@@ -1350,6 +1362,10 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
         ek(el("div", "yh-slogan"), el("p", "yh-slogan-t", "İHA mühendisliği, adım adım."),
           el("p", "yh-lead", l.length + " modül, " + PHASES.length + " aşama. Python'dan başlarsın, Jetson ve Pixhawk'la gerçek drone'da bitirirsin. Her modülde önce okur, sonra izler, kurar ve görevini yaparsın."))),
       ek(el("div", "yh-yan"), kanalKarti(), kaldiginYer(n))));
+    var atolyeBag = el("a", "yh-atolye"); atolyeBag.href = "atolye/";
+    var atolyeGorsel = el("img"); atolyeGorsel.src = "atolye/atolye-onizleme.jpg"; atolyeGorsel.alt = "Sanal atölyede açık gövde ve parça yerleşimi"; atolyeGorsel.loading = "lazy"; atolyeGorsel.width = 144; atolyeGorsel.height = 86;
+    ek(atolyeBag, ek(el("span", "yh-atolye-visual"), atolyeGorsel), ek(el("div"), el("strong", null, "Online Atölye: kur, bağla, dene."), el("span", null, "Parçaları karşılaştır, kendi İHA’nı kur; bağlantıları ve motorları dene.")), el("b", null, "Online atölyeyi aç ↗"));
+    v.appendChild(atolyeBag);
     v.appendChild(rotaBolumu(n));
 
     var govde = el("div", "yh-govde"), liste = el("div"), sekme = el("nav", "yh-sekme");
@@ -2121,6 +2137,22 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
   var H = {oturum:null, profil:null, hata:null, yukleniyor:false, yenileme:null, yeniGiris:false, surum:0, cikiliyor:false};
   var hesapVar = !DOSYA && !!(HESAP.url && HESAP.anahtar);
   var hesapBtn = document.getElementById("hesap"), hdlg = document.getElementById("hesap-dlg"), odlg = document.getElementById("onay");
+  // Sabit, aynı origin'deki atölyeye dönüş. Kullanıcıdan bir dönüş URL'si kabul edilmez.
+  var atolyeDonus = false;
+  try {
+    var au = new URL(location.href), at = Number(sessionStorage.getItem("skyvius-atolye-donus"));
+    if (au.searchParams.get("atolye_giris") === "1") {
+      at = Date.now(); sessionStorage.setItem("skyvius-atolye-donus", String(at));
+      au.searchParams.delete("atolye_giris"); history.replaceState(null, "", au.pathname + au.search + au.hash);
+    }
+    atolyeDonus = at > Date.now() - 30 * 60 * 1000 && at <= Date.now();
+  } catch(e) {}
+  function atolyeyeDon(){
+    if (!atolyeDonus || hesapDurumu() !== "hazir" || !H.profil.ad_onaylandi) return;
+    atolyeDonus = false;
+    try { sessionStorage.removeItem("skyvius-atolye-donus"); } catch(e) {}
+    location.assign("atolye/");
+  }
 
   function oturumYaz(o){
     H.oturum = o;
@@ -2299,6 +2331,7 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
     }
     if (hdlg.open) hesapIcerik();
     yenileyiciler.forEach(function(f){ f(); });
+    atolyeyeDon();
   }
   function girisDugmesi(){ return ek(dugme("btn", null, girisYap), ikon(KISI), "Google ile giriş yap"); }
 
@@ -2307,7 +2340,7 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
     var g = document.getElementById("hesap-ic"); g.textContent = "";
     if (!H.oturum) {
       if (H.hata) g.appendChild(el("p", "hata", H.hata));
-      ek(g, el("p", null, "Giriş isteğe bağlı. Testleri çözmek ve ilerlemeni başka cihazlarda da görmek için gerekir. Girişsiz ilerlemen yalnız bu tarayıcıda kalır."),
+      ek(g, el("p", null, atolyeDonus ? "Online Atölye’ye erişmek için akademi hesabınla giriş yap. Giriş tamamlandığında atölyeye döneceksin; demo erişimi yayın tercihine göre kontrol edilir." : "Giriş isteğe bağlı. Testleri çözmek ve ilerlemeni başka cihazlarda da görmek için gerekir. Girişsiz ilerlemen yalnız bu tarayıcıda kalır."),
         ek(el("div", "hs-dugmeler"), girisDugmesi()),
         ek(el("p", "muted"), "Girişten sonra gizlilik metnini onaylaman istenir. ", bag("#gizlilik", null, "Gizlilik metnini oku")));
       return;
@@ -2950,19 +2983,50 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
       if (!yetkiliMi()) { govde.appendChild(el("p", "note", "Bu sayfa yalnız mentor ve yöneticiler içindir.")); return; }
       var sek = el("div", "pn-sekme"), alan = el("div");
       sek.setAttribute("role", "tablist"); sek.setAttribute("aria-label", "Panel bölümleri");
-      [["teslim", "Teslimler"], ["uye", "Üyeler"], ["takim", "Takımlar"], ["sayi", "Sayılar"], ["icerik", "İçerik"]].forEach(function(x){
+      var bolumler = [["teslim", "Teslimler"], ["uye", "Üyeler"], ["takim", "Takımlar"], ["sayi", "Sayılar"], ["icerik", "İçerik"]];
+      if (H.profil.rol === "admin") bolumler.push(["atolye", "Online Atölye"]);
+      else if (PANEL_SEKME === "atolye") PANEL_SEKME = "teslim";
+      bolumler.forEach(function(x){
         var b = dugme("pn-sb", x[1], function(){ PANEL_SEKME = x[0]; goster(); });
         b.setAttribute("role", "tab"); b.setAttribute("data-k", x[0]); sek.appendChild(b);
       });
       function goster(){
         [].forEach.call(sek.children, function(b){ b.setAttribute("aria-selected", String(b.getAttribute("data-k") === PANEL_SEKME)); });
         alan.textContent = "";
-        ({teslim:panelTeslim, uye:panelUye, takim:panelTakim, sayi:panelSayi, icerik:panelIcerik})[PANEL_SEKME](alan);
+        ({teslim:panelTeslim, uye:panelUye, takim:panelTakim, sayi:panelSayi, icerik:panelIcerik, atolye:panelAtolye})[PANEL_SEKME](alan);
       }
       ek(govde, sek, alan); goster();
     }
     function yenile(){ var k = hesapDurumu() + "|" + (H.profil ? H.profil.rol : ""); if (k !== anahtar) { anahtar = k; ciz(); } }
     yenileyiciler.push(yenile); yenile();
+  }
+
+  function panelAtolye(alan){
+    if (!H.profil || H.profil.rol !== "admin") { alan.appendChild(el("p", "note", "Yayın tercihini yalnız yönetici değiştirebilir.")); return; }
+    var bolum = el("section", "pn-bolum"), bilgi = el("p", "muted", "Yayın tercihi kontrol ediliyor…"), sonuc = el("p", "muted"), s = el("select"), f = el("div", "field"), l = el("label", null, "Demo erişimi");
+    s.id = "pn-atolye-yayin"; l.setAttribute("for", s.id); s.disabled = true;
+    [["admins", "Sadece yöneticiler"], ["public", "Herkese açık (akademi hesabıyla)"]].forEach(function(x){ var o = el("option", null, x[1]); o.value = x[0]; s.appendChild(o); });
+    s.value = "admins";
+    var kaydet = dugme("btn", "Yayın tercihini kaydet", function(){
+      var istenen = s.value; s.disabled = true; kaydet.disabled = true; sonuc.className = "muted"; sonuc.textContent = "Kaydediliyor…";
+      api("rpc/atolye_yayin_ayarla", {p_mod:istenen}).then(function(d){
+        if (!bolum.isConnected) return; durumYaz(d); sonuc.className = "note"; sonuc.textContent = "Yayın tercihi kaydedildi. Yöneticilerin erişimi her zaman açık.";
+      }).catch(function(e){ if (!bolum.isConnected) return; sonuc.className = "hata"; sonuc.textContent = e.message; }).then(function(){ if (bolum.isConnected) { s.disabled = false; kaydet.disabled = false; } });
+    });
+    kaydet.disabled = true;
+    ek(bolum, el("h2", null, "Online Atölye · demo yayını"),
+      el("p", "muted", "Yöneticiler her iki tercihte de atölyeye erişir. Sadece yöneticiler seçildiğinde diğer ziyaretçiler önizlemeyle Çok yakında ekranını görür. Herkese açık sürümde akademi hesabıyla giriş gerekir."),
+      bilgi, ek(f, l, s), ek(el("div", "ts-alt"), kaydet, bag("atolye/", "btn outline", "Atölyeyi dene ↗")), sonuc,
+      el("p", "note", "3B çizim ve hesaplar kullanıcının tarayıcısında çalışır. Sunucu yalnız erişim tercihini ve hesabın düzen kaydını yönetir."));
+    alan.appendChild(bolum);
+    function durumYaz(d){
+      if (!d || !d.yonetici || ["admins", "public"].indexOf(d.mod) < 0) throw new Error("Yönetici erişimi doğrulanamadı.");
+      s.value = d.mod; bilgi.textContent = "Şu an: " + (d.mod === "admins" ? "Sadece yöneticiler." : "Akademi hesabıyla herkese açık.");
+    }
+    api("rpc/atolye_erisim", {}).then(function(d){ if (!bolum.isConnected) return; durumYaz(d); s.disabled = false; kaydet.disabled = false; }).catch(function(){
+      if (!bolum.isConnected) return; bilgi.className = "hata";
+      bilgi.textContent = "Yayın ayarı okunamadı. Sunucuda 10_atolye_yayin.sql kurulumu ve bağlantı kontrol edilmeli. Tercih doğrulanana kadar normal ziyaretçiye atölye açılmaz; doğrulanmış yönetici demoyu deneyebilir.";
+    });
   }
 
   /* Teslimler: süzgeç (durum, modül, takım, ad) ve her teslim için geri bildirim formu */
@@ -3282,6 +3346,7 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
   hesapDegisti();
   girisDonusu().then(function(){
     hesapDegisti(); profilYukle();
+    if (atolyeDonus && !H.oturum) { hesapIcerik(); if (!hdlg.open) hdlg.showModal(); }
     if (H.hata && !H.oturum) { hesapIcerik(); if (!hdlg.open) hdlg.showModal(); }
   });
   ziyaretSay();
