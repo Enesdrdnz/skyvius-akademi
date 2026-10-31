@@ -1,13 +1,13 @@
-import {FRAMES,MOTORS,ESCS,PROPS,MATERIALS,BATTERIES,CONTROLLERS,COMPUTERS,EXTRAS,MOTOR_LAYOUT,FACES} from './data.mjs';
+import {FRAMES,MOTORS,ESCS,PDBS,PROPS,MATERIALS,BATTERIES,CONTROLLERS,COMPUTERS,EXTRAS,MOTOR_LAYOUT,FACES} from './data.mjs';
 import {defaultPlane,cleanPlane,derivedPlaneFrame,planeDesign,motorPlan,planeAerodynamics} from './plane.mjs';
 import {assemblyLayout} from './assembly.mjs';
 export const clamp=(v,min,max)=>Math.min(max,Math.max(min,v));
-export function defaults(type='quad') {return {version:2,type,frame:'none',motor:'none',esc:'none',prop:'none',material:'none',battery:'none',fc:'none',computer:'none',liftMotor:'none',liftEsc:'none',liftProp:'none',plane:defaultPlane(),extras:[],payload:0,batteryPosition:0,reserve:20,wiring:[0,0,0,0,0,0,0,0],ground:[false,false,false,false,false,false,false,false],directions:[-1,-1,1,1,-1,1,-1,1],servoReverse:[false,false,false],links:{gps:false,computer:false},accel:false,compass:false};}
-export function exampleBuild(type='quad'){return {...defaults(type),frame:type==='quad'?'q7':'p120',motor:type==='quad'?'m2806':'m2814',esc:'e45',prop:type==='quad'?'p74':'p1045',material:'pc',battery:type==='quad'?'b6s40':'b4s22',fc:'pix',extras:['gps','telemetry'],wiring:[1,2,3,4,0,0,0,0],ground:[true,true,true,true,false,false,false,false],links:{gps:true,computer:false}};}
+export function defaults(type='quad') {return {version:2,type,frame:'none',motor:'none',esc:'none',pdb:'none',prop:'none',material:'none',battery:'none',fc:'none',computer:'none',liftMotor:'none',liftEsc:'none',liftProp:'none',plane:defaultPlane(),extras:[],payload:0,batteryPosition:0,reserve:20,wiring:[0,0,0,0,0,0,0,0],ground:[false,false,false,false,false,false,false,false],directions:[-1,-1,1,1,-1,1,-1,1],servoReverse:[false,false,false],links:{gps:false,computer:false},accel:false,compass:false};}
+export function exampleBuild(type='quad'){return {...defaults(type),frame:type==='quad'?'q7':'p120',motor:type==='quad'?'m2806':'m2814',esc:'e45',pdb:type==='quad'?'pdb6':'none',prop:type==='quad'?'p74':'p1045',material:'pc',battery:type==='quad'?'b6s40':'b4s22',fc:'pix',extras:['gps','telemetry'],wiring:[1,2,3,4,0,0,0,0],ground:[true,true,true,true,false,false,false,false],links:{gps:true,computer:false}};}
 export function cleanSaved(value){
   if(!value||![1,2].includes(value.version)||!['quad','plane'].includes(value.type)) return null;
   const s=defaults(value.type);
-  for(const [key,list] of Object.entries({frame:FRAMES.filter(f=>f.type===s.type),motor:s.type==='plane'?MOTORS:MOTORS.filter(m=>m.types.includes(s.type)),esc:ESCS,prop:PROPS,material:MATERIALS,battery:BATTERIES,fc:CONTROLLERS,computer:COMPUTERS,liftMotor:MOTORS,liftEsc:ESCS,liftProp:PROPS}))if(value[key]==='none'||list.some(x=>x.id===value[key]))s[key]=value[key];
+  for(const [key,list] of Object.entries({frame:FRAMES.filter(f=>f.type===s.type),motor:s.type==='plane'?MOTORS:MOTORS.filter(m=>m.types.includes(s.type)),esc:ESCS,pdb:s.type==='quad'?PDBS:[],prop:PROPS,material:MATERIALS,battery:BATTERIES,fc:CONTROLLERS,computer:COMPUTERS,liftMotor:MOTORS,liftEsc:ESCS,liftProp:PROPS}))if(value[key]==='none'||list.some(x=>x.id===value[key]))s[key]=value[key];
   s.extras=EXTRAS.filter(x=>Array.isArray(value.extras)&&value.extras.includes(x.id)).map(x=>x.id);
   for(const [k,lo,hi] of [['payload',0,600],['batteryPosition',-100,100],['reserve',10,40]])if(Number.isFinite(value[k]))s[k]=clamp(value[k],lo,hi);
   for(let i=0;i<8;i++){if(Number.isInteger(value.wiring?.[i])&&value.wiring[i]>=0&&value.wiring[i]<=8)s.wiring[i]=value.wiring[i];if(typeof value.ground?.[i]==='boolean')s.ground[i]=value.ground[i];if([-1,1].includes(value.directions?.[i]))s.directions[i]=value.directions[i];}
@@ -18,7 +18,7 @@ export function cleanSaved(value){
   // Kalibrasyon, açılan sanal oturumda tekrar yapılır.
   return s;
 }
-export function selected(s){const base=FRAMES.find(x=>x.id===s.frame);return {frame:s.type==='plane'?derivedPlaneFrame(base,s):base,motor:MOTORS.find(x=>x.id===s.motor),esc:ESCS.find(x=>x.id===s.esc),prop:PROPS.find(x=>x.id===s.prop),material:MATERIALS.find(x=>x.id===s.material),battery:BATTERIES.find(x=>x.id===s.battery),fc:CONTROLLERS.find(x=>x.id===s.fc),computer:COMPUTERS.find(x=>x.id===s.computer),liftMotor:MOTORS.find(x=>x.id===s.liftMotor),liftEsc:ESCS.find(x=>x.id===s.liftEsc),liftProp:PROPS.find(x=>x.id===s.liftProp)};}
+export function selected(s){const base=FRAMES.find(x=>x.id===s.frame);return {frame:s.type==='plane'?derivedPlaneFrame(base,s):base,motor:MOTORS.find(x=>x.id===s.motor),esc:ESCS.find(x=>x.id===s.esc),pdb:s.type==='quad'?PDBS.find(x=>x.id===s.pdb):undefined,prop:PROPS.find(x=>x.id===s.prop),material:MATERIALS.find(x=>x.id===s.material),battery:BATTERIES.find(x=>x.id===s.battery),fc:CONTROLLERS.find(x=>x.id===s.fc),computer:COMPUTERS.find(x=>x.id===s.computer),liftMotor:MOTORS.find(x=>x.id===s.liftMotor),liftEsc:ESCS.find(x=>x.id===s.liftEsc),liftProp:PROPS.find(x=>x.id===s.liftProp)};}
 export function curve(s,group='main'){
  const p=selected(s),m=group==='lift'?p.liftMotor:p.motor,prop=group==='lift'?p.liftProp:p.prop,b=p.battery;
  if(!m||!prop||!b||b.s<m.minS||b.s>m.maxS||prop.diameter<m.minProp||prop.diameter>m.maxProp)return null;
@@ -28,7 +28,7 @@ export function curve(s,group='main'){
 export function calculate(s){
  const p=selected(s),roles=motorPlan(s),mainCount=roles.filter(x=>x.group==='main').length,liftCount=roles.filter(x=>x.group==='lift').length,n=roles.length;
  const addons=EXTRAS.filter(x=>s.extras.includes(x.id));
- const mass=(p.frame?.mass||0)+((p.motor?.mass||0)+(p.esc?.mass||0)+(p.prop?.mass||0)*(p.material?.mass||1))*mainCount+((p.liftMotor?.mass||0)+(p.liftEsc?.mass||0)+(p.liftProp?.mass||0)*(p.material?.mass||1))*liftCount+(p.battery?.mass||0)+(p.fc?.mass||0)+(p.computer?.mass||0)+addons.reduce((a,b)=>a+b.mass,0)+s.payload+(s.type==='plane'&&p.frame?45:0);
+ const mass=(p.frame?.mass||0)+((p.motor?.mass||0)+(p.esc?.mass||0)+(p.prop?.mass||0)*(p.material?.mass||1))*mainCount+((p.liftMotor?.mass||0)+(p.liftEsc?.mass||0)+(p.liftProp?.mass||0)*(p.material?.mass||1))*liftCount+(p.battery?.mass||0)+(p.pdb?.mass||0)+(p.fc?.mass||0)+(p.computer?.mass||0)+addons.reduce((a,b)=>a+b.mass,0)+s.payload+(s.type==='plane'&&p.frame?45:0);
  const avionicPower=(p.fc?.power||0)+(p.computer?.power||0)+addons.reduce((a,b)=>a+b.power,0)+(s.type==='plane'&&p.frame?3+(planeDesign(s).architecture.tilt?6:0):0);
  const c=curve(s),lc=liftCount?curve(s,'lift'):null,energy=p.battery?p.battery.s*3.7*p.battery.ah:0,usable=energy*(1-s.reserve/100),layout=assemblyLayout(p,s.type,s.batteryPosition);
  let power=null,hoverThrottle=null,duration=null,hoverPower=null,aero=null,vtolEnergy=0;
@@ -51,9 +51,17 @@ export function checks(s){
   const c=calculate(s),r=[];
   const add=(id,title,detail,level='ok')=>r.push({id,title,detail,level});
   if(!c.frame)return [];
-  const missing=['motor','esc','prop','material','battery','fc'].filter(k=>!c[k]);
-  if(missing.length)add('parts','Temel parçalar eksik',missing.map(k=>({motor:'Motor',esc:'ESC',prop:'Pervane',material:'Pervane malzemesi',battery:'Batarya',fc:'Uçuş kontrolcüsü'}[k])).join(', '),'bad');
+  const missing=['motor','esc',...(s.type==='quad'?['pdb']:[]),'prop','material','battery','fc'].filter(k=>!c[k]);
+  if(missing.length)add('parts','Temel parçalar eksik',missing.map(k=>({motor:'Motor',esc:'ESC',pdb:'Güç dağıtım kartı (PDB)',prop:'Pervane',material:'Pervane malzemesi',battery:'Batarya',fc:'Uçuş kontrolcüsü'}[k])).join(', '),'bad');
   else add('parts','Temel parçalar yerinde',`${c.n} motor · ${c.n} ESC · ${c.battery.s}S batarya`);
+  if(c.pdb){
+    const ports=c.pdb.outputs>=c.n;add('pdbPorts',ports?'PDB çıkış sayısı yeterli':'PDB’de yeterli ESC çıkışı yok',`${c.n} ESC · kartta ${c.pdb.outputs} güç çıkışı`,ports?'ok':'bad');
+    if(c.battery){const ok=c.battery.s>=c.pdb.minS&&c.battery.s<=c.pdb.maxS;add('pdbVoltage',ok?'PDB gerilim aralığında':'Batarya–PDB gerilimi uyumsuz',`${c.battery.s}S batarya · PDB ${c.pdb.minS}–${c.pdb.maxS}S`,ok?'ok':'bad');}
+    if(c.maxCurrent&&c.battery){const total=c.maxCurrent*c.n+c.avionicPower/(c.battery.s*3.7),margin=c.pdb.amps/total,branch=c.pdb.branchAmps/c.maxCurrent;
+      add('pdbCurrent',margin>=1.15?'PDB toplam akım payı var':'PDB toplam akımını kontrol et',`Tüm motorlar ~${Math.round(total)} A maks. · PDB ${c.pdb.amps} A toplam`,margin<1?'bad':margin<1.15?'warn':'ok');
+      add('pdbBranchCurrent',branch>=1.2?'PDB dal akımı uygun':'PDB dal akımını kontrol et',`Bir ESC ~${c.maxCurrent.toFixed(1)} A maks. · dal başına ${c.pdb.branchAmps} A`,branch<1?'bad':branch<1.2?'warn':'ok');
+    }
+  }
   if(c.battery&&c.esc){const ok=c.battery.s>=c.esc.minS&&c.battery.s<=c.esc.maxS;add('voltage',ok?'ESC gerilimi uygun':'Batarya–ESC gerilimi uyumsuz',`${c.battery.s}S (${(c.battery.s*4.2).toFixed(1).replace('.',',')} V tam dolu) · ESC ${c.esc.minS}–${c.esc.maxS}S`,ok?'ok':'bad');}
   if(c.battery&&c.motor){const ok=c.battery.s>=c.motor.minS&&c.battery.s<=c.motor.maxS;add('motorVoltage',ok?'Motor gerilim aralığında':'Motor gerilim sınırı dışında',`Motor ${c.motor.minS}–${c.motor.maxS}S · örnek referans ${c.motor.nominal}S`,ok?'ok':'bad');}
   if(c.motor&&c.frame){const ok=c.frame.mounts.includes(c.motor.mount);add('mount',ok?'Motor montajı eşleşiyor':'Montaj delikleri eşleşmiyor',`Motor ${c.motor.mount} mm · gövde ${c.frame.mounts.join(' / ')} mm`,ok?'ok':'bad');}
@@ -81,7 +89,7 @@ export function checks(s){
   if(c.battery)add('cg',Math.abs(c.cg)>(s.type==='quad'?12:3)?'Ağırlık merkezi kayıyor':'Ağırlık merkezi yakın',`${c.cg>=0?'Öne':'Arkaya'} ${Math.abs(c.cg).toFixed(1)} mm · batarya konumu etkisi`,Math.abs(c.cg)>(s.type==='quad'?12:3)?'warn':'ok');
   return r;
 }
-export function electricalReady(s){const p=selected(s);if(!p.frame||!p.motor||!p.esc||!p.battery||!p.fc)return false;if(motorPlan(s).some(r=>r.group==='lift')&&(!p.liftMotor||!p.liftEsc))return false;return !checks(s).some(c=>['voltage','motorVoltage','current','liftVoltage','liftEscVoltage','liftCurrent'].includes(c.id)&&c.level==='bad');}
+export function electricalReady(s){const p=selected(s);if(!p.frame||!p.motor||!p.esc||!p.battery||!p.fc||(s.type==='quad'&&!p.pdb))return false;if(motorPlan(s).some(r=>r.group==='lift')&&(!p.liftMotor||!p.liftEsc))return false;return !checks(s).some(c=>['pdbPorts','pdbVoltage','pdbCurrent','pdbBranchCurrent','voltage','motorVoltage','current','liftVoltage','liftEscVoltage','liftCurrent'].includes(c.id)&&c.level==='bad');}
 export function spinningMotors(s,output){if(!electricalReady(s))return [];return s.wiring.slice(0,motorPlan(s).length).flatMap((v,i)=>v===output&&s.ground[i]?[i]:[]);}
 export function flightProblems(s,propsRemoved=false){const bad=checks(s).filter(x=>x.level==='bad').map(x=>x.title);if(!selected(s).frame)bad.push('Önce gövde ekle');if(!s.accel)bad.push('İvmeölçer kalibrasyonu eksik');if(s.extras.includes('gps')&&!s.links?.gps)bad.push('GPS bağlantısı eksik');if(s.computer!=='none'&&!s.links?.computer)bad.push('Jetson iletişim bağlantısı eksik');if(s.extras.includes('gps')&&!s.compass)bad.push('Pusula kalibrasyonu eksik');if(propsRemoved)bad.push('Pervaneler çıkarılmış');if(s.type==='plane'&&s.servoReverse.some(Boolean))bad.push('Kontrol yüzeyi yönlerini düzelt');return bad;}
 // Aracın dünya yukarısını kendi yerel eksenlerinde ifade eden vektörü.

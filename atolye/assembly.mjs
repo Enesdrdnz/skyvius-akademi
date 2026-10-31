@@ -14,19 +14,55 @@ export function assemblyLayout(parts,type='quad',batteryPosition=0){
   const quad=type==='quad',large=f.size>=10,scale=quad?1:f.span/1.2;
   const deck={width:quad?(large?.14:.105):.115*scale,length:quad?(large?.23:.185):.32*scale,y:quad?.026:.086};
   const mounts={},problems=[];
+  if(quad&&parts.pdb){const c=parts.pdb,bottom=deck.y+.004;mounts.pdb={x:0,y:bottom+c.height/2000,z:-deck.length/2+.008+c.length/2000,width:c.width/1000,length:c.length/1000,height:c.height/1000,bottom,top:bottom+c.height/1000};}
   if(parts.fc){const c=parts.fc;mounts.fc={x:quad?-.008:0,y:deck.y+.005+c.height/2000,z:parts.computer?-.061:0,width:c.width/1000,length:c.length/1000,height:c.height/1000,bottom:deck.y+.005};}
   if(parts.computer){const c=parts.computer;
     if(c.width/1000+.012>deck.width||c.length/1000+.085>deck.length)problems.push('Jetson taşıyıcısı bu gövdenin ayrılmış alanına sığmıyor');
     mounts.computer={x:0,y:deck.y+.008+c.height/2000,z:.03*scale,width:c.width/1000,length:c.length/1000,height:c.height/1000,bottom:deck.y+.008};
   }
+  // PDB önde görünür bir yuvada; diğer kartlar aynı tablada sırayla arkasına oturur.
+  if(mounts.pdb){
+    let rear=mounts.pdb.z+mounts.pdb.length/2;
+    for(const key of['fc','computer'])if(mounts[key]){const m=mounts[key];m.z=rear+.005+m.length/2;rear=m.z+m.length/2;}
+    if(rear>deck.length/2-.004+1e-9)problems.push('PDB, Pixhawk ve Jetson için tablanın boyuna montaj alanı yetersiz');
+  }
   if(parts.battery){const b=parts.battery;const top=quad?-.014:.067;
     mounts.battery={x:0,y:top-b.height/2000,z:quad?-batteryPosition*.0007:-.19*scale-batteryPosition*.0006,width:b.width/1000,length:b.length/1000,height:b.height/1000,top};
   }
   mounts.gps={x:-deck.width/2+.013,y:deck.y+.0685,z:deck.length/2-.012,baseY:deck.y,height:.065};
+  if(mounts.pdb&&mounts.computer)mounts.gps.x=-deck.width/2-.009;
   mounts.telemetry={x:deck.width/2+.011,y:deck.y+.006,z:-.025,baseY:deck.y};
   mounts.camera={x:0,y:quad?.012:.07,z:quad?-deck.length/2-.018:-.29*scale};
   mounts.regulator={x:deck.width/2-.014,y:deck.y+.006,z:-.045*scale};
   return {empty:false,deck,mounts,problems,scale,rootY:quad?Math.max(.115,(parts.battery?.height||30)/1000+.045):.073};
+}
+// Kol üstü .006; yatak 1 mm, ESC altı doğrudan yatağın üstünde.
+export function quadEscMount(parts,role){
+  const span=parts.frame.span/Math.SQRT2/2,x=role.x*span,z=role.z*span,r=Math.hypot(x,z),ux=x/r,uz=z/r;
+  const width=parts.esc.width/1000,length=parts.esc.length/1000,y=.011;
+  return {x:x*.58,y,z:z*.58,ux,uz,vx:uz,vz:-ux,width,length,height:.008,armTop:.006,padTop:.007,bottom:.007,
+    point(along,side=0,height=y){return [this.x+ux*along+uz*side,height,this.z+uz*along-ux*side];}};
+}
+export function quadPhasePaths(parts,role){
+  const m=quadEscMount(parts,role),span=parts.frame.span/Math.SQRT2/2,x=role.x*span,z=role.z*span,gap=Math.min(.007, m.width/2-.003),inset=parts.motor.diameter/2000*.96;
+  return [-1,0,1].map(k=>{
+    const side=k*gap,start=m.point(m.length/2+.002,side,.016),end=[x-m.ux*inset+m.vx*side,.017,z-m.uz*inset+m.vz*side];
+    return [start,[(start[0]+end[0])/2,.027+Math.abs(k)*.001,(start[2]+end[2])/2],end];
+  });
+}
+// Her çıkışın + ve − lehim pabuçları ayrı. Yakın kola en yakın boş çift atanır.
+export function quadPdbPorts(m,pdb,roles){
+  const half=pdb.outputs/2,ports=[];
+  for(const side of[-1,1])for(let j=0;j<half;j++){
+    const z=m.z-m.length/2+.007+j*(m.length-.019)/Math.max(1,half-1),x=m.x+side*(m.width/2-.003);
+    ports.push({id:ports.length+1,positive:[x,m.top+.001,z],negative:[x,m.top+.001,z+.005]});
+  }
+  const free=ports.slice(),assigned=[];
+  for(const r of roles){if(!free.length)break;const targetX=r.x,targetZ=r.z;let best=0,score=-Infinity;
+    for(let i=0;i<free.length;i++){const p=free[i],v=(p.positive[0]-m.x)*targetX+(p.positive[2]-m.z)*targetZ;if(v>score){score=v;best=i;}}
+    assigned.push({...free.splice(best,1)[0],motor:r.index});
+  }
+  return {ports,assigned,input:{positive:[m.x-.006,m.top+.001,m.z-m.length/2+.003],negative:[m.x+.006,m.top+.001,m.z-m.length/2+.003]}};
 }
 export function boxesOverlap(a,b,pad=0){return !!a&&!!b&&Math.abs(a.x-b.x)<(a.width+b.width)/2+pad&&Math.abs(a.y-b.y)<(a.height+b.height)/2+pad&&Math.abs(a.z-b.z)<(a.length+b.length)/2+pad;}
 export function labelPresentation(zoom,projectedSpan,running=false){return {scale:Math.max(.3,Math.min(1,1/zoom)),visible:running||projectedSpan>=105};}

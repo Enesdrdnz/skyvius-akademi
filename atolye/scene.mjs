@@ -1,6 +1,6 @@
 import * as T from './vendor/three.module.min.js';
 import {selected,calculate,clamp} from './logic.mjs';
-import {assemblyLayout,labelPresentation} from './assembly.mjs';
+import {assemblyLayout,labelPresentation,quadEscMount,quadPhasePaths,quadPdbPorts} from './assembly.mjs';
 import {createPlane,updatePlaneControls,activePlaneMotors} from './plane-scene.mjs';
 import {planeDesign,motorPlan} from './plane.mjs';
 
@@ -42,7 +42,7 @@ export class Workbench {
   rebuild(state,propsRemoved=false){
     this.state=state;this.propsRemoved=propsRemoved;this.wireAnimations=[];this.nextWires=new Set();this.clearModel();this.model=new T.Group();this.vehicle.add(this.model);
     const p=selected(state);this.parts={};this.layout=assemblyLayout(p,state.type,state.batteryPosition);this.wireGroup=new T.Group();this.model.add(this.wireGroup);this.propMeshes=[];this.escMeshes=[];this.servoMeshes=[];this.controlSurfaces=[];this.motorMounts=[];
-    this.empty=this.layout.empty;this.baseY=this.layout.rootY;this.vehicle.position.y=this.baseY+this.altitude*.12;
+    this.pdbWiring=null;this.empty=this.layout.empty;this.baseY=this.layout.rootY;this.vehicle.position.y=this.baseY+this.altitude*.12;
     if(!this.empty){if(state.type==='quad')this.buildQuad(p);else this.buildPlane(p);}
     this.knownWires=this.nextWires;this.wireGroup.visible=this.showWires;
     this.propMeshes.forEach(x=>x.visible=!propsRemoved);this.baseSpan=p.frame?(state.type==='quad'?p.frame.span:.72*p.frame.span):.36;
@@ -64,22 +64,51 @@ export class Workbench {
       this.cyl(.003,.004,this.baseY-.005,0x68766c,x,-(this.baseY-.005)/2,z,this.model,'frame',8);
       this.box(.021,.005,.028,0x273739,x,-this.baseY+.0025,z);
     }
-    if(p.fc)this.controller(p);if(p.battery)this.battery(p);
+    if(p.pdb)this.powerDistribution(p,roles);if(p.fc)this.controller(p);if(p.battery)this.battery(p);
     for(let i=0;i<roles.length;i++){
       const m=roles[i],x=m.x*span,z=m.z*span;
       const motor=p.motor?this.motor(p,x,.011,z,i):null;
-      if(p.esc){const g=new T.Group();g.position.set(x*.58,.014,z*.58);g.rotation.y=Math.atan2(x,z);this.model.add(g);this.escMeshes.push(g);
-        this.box(p.esc.width/1000,.008,p.esc.length/1000,0x335d5b,0,0,0,g,'esc');this.box(p.esc.width/1100,.003,p.esc.length/1100,0x243438,0,.005,0,g,'esc');
-        if(p.motor)for(let k=0;k<3;k++)this.wire([[x*.72+(k-1)*.003,.018,z*.72],[x*.87+(k-1)*.003,.021,z*.87],[x,.016,z]],k===0?0xce6d38:0x3e514b,.0012,this.wireGroup,'esc',`phase-${i}-${k}`);
-        if(p.fc&&this.state.wiring[i]){const out=this.state.wiring[i],fc=this.layout.mounts.fc,ex=fc.x+fc.width/2+.002,ez=fc.z+(out-4.5)*.005;
-          this.wire([[x*.43,.022,z*.43],[x*.3,d.y+.015,z*.3],[ex,fc.y,ez]],0xea8543,.0012,this.wireGroup,'esc',`signal-${i}-${out}`);
-          if(this.state.ground[i])this.wire([[x*.43+.004,.022,z*.43],[x*.3+.005,d.y+.012,z*.3],[ex,fc.y-.003,ez]],0x263e43,.0011,this.wireGroup,'esc',`gnd-${i}-${out}`);
-        }
-      }
+      if(p.esc)this.quadEsc(p,m,i);
       if(p.prop&&motor)this.propeller(p,motor,0,p.motor.height/1000+.008,0,i);
       if(p.motor)this.addMotorLabel(i,x,p.motor.height/1000+.035,z,m.name);
     }
     this.extraParts(p);
+  }
+  powerDistribution(p,roles){
+    const m=this.layout.mounts.pdb,g=new T.Group();g.position.set(m.x,m.y,m.z);this.model.add(g);this.parts.pdb=g;
+    this.standOffs(m,this.layout.deck.y,'pdb');
+    this.box(m.width,m.height,m.length,p.pdb.color,0,0,0,g,'pdb').userData.pdbBoard=true;
+    this.box(m.width*.2,.001,m.length*.52,0x243d42,0,m.height/2+.0005,0,g,'pdb');
+    this.pdbWiring=quadPdbPorts(m,p.pdb,roles);
+    for(const port of this.pdbWiring.ports)for(const [polarity,color]of [['positive',0xd35b47],['negative',0x24343b]]){
+      const [x,y,z]=port[polarity];this.box(.006,.001,.0045,color,x,y-.0006,z,this.model,'pdb');
+      const pad=this.box(.0035,.001,.003,0xe0ba68,x,y,z,this.model,'pdb');pad.userData.pdbPad={port:port.id,polarity};
+    }
+    for(const [polarity,color]of [['positive',0xde6552],['negative',0x263a40]]){const [x,y,z]=this.pdbWiring.input[polarity];this.box(.007,.0015,.005,color,x,y,z,this.model,'pdb');}
+    this.label('PDB · '+p.pdb.outputs,m.x,m.top+.009,m.z,.006);
+  }
+  quadEsc(p,role,i){
+    const d=this.layout.deck,m=quadEscMount(p,role),g=new T.Group();g.position.set(m.x,m.y,m.z);g.rotation.y=Math.atan2(m.ux,m.uz);g.userData.escMount=m;this.model.add(g);this.escMeshes.push(g);
+    this.box(m.width+.004,.001,m.length+.004,0x6b7771,0,-.0045,0,g,'esc').userData.escBed=true;
+    this.box(m.width,m.height,m.length,0x335d5b,0,0,0,g,'esc').userData.escBody=true;
+    this.box(m.width*.91,.003,m.length*.91,0x243438,0,.005,0,g,'esc');
+    for(const z of[-m.length*.25,m.length*.25]){
+      this.box(m.width+.004,.0015,.004,0x172e36,0,.00775,z,g,'esc');
+      for(const side of[-1,1])this.box(.002,.012,.004,0x172e36,side*(m.width/2+.001),.001,z,g,'esc');
+    }
+    if(p.motor)quadPhasePaths(p,role).forEach((points,k)=>{
+      const [sx,sy,sz]=points[0],end=points[2];this.box(.004,.002,.004,0xdab96c,sx,sy-.001,sz,this.model,'esc');
+      const lead=this.wire(points,[0xe1b531,0x369bd5,0xb46bc6][k],.0019,this.wireGroup,'esc',`phase-${i}-${k}`);lead.userData.phase={motor:i,phase:k+1,start:points[0],end};
+    });
+    const port=this.pdbWiring?.assigned.find(p=>p.motor===i);
+    if(port)for(const [polarity,color,side]of [['positive',0xd75843,-.004],['negative',0x26363d,.004]]){
+      const start=port[polarity],end=m.point(-m.length/2-.001,side,.014),edge=Math.sign(start[0])*(this.layout.mounts.pdb.width/2+.01);
+      const lead=this.wire([start,[edge,d.y+.011,start[2]],[end[0]*.8,d.y+.012,end[2]*.8],end],color,.0017,this.wireGroup,'pdb',`pdb-${p.pdb.id}-esc-${i}-${polarity}`);lead.userData.power={motor:i,polarity,port:port.id};
+    }
+    if(p.fc&&this.state.wiring[i]){const out=this.state.wiring[i],fc=this.layout.mounts.fc,ex=fc.x+fc.width/2+.002,ez=fc.z+(out-4.5)*.005;
+      this.wire([m.point(-m.length/2-.002,-m.width*.35,.014),[m.x*.75,d.y+.016,m.z*.75],[ex,fc.y,ez]],0xea8543,.0011,this.wireGroup,'esc',`signal-${i}-${out}`);
+      if(this.state.ground[i])this.wire([m.point(-m.length/2-.002,m.width*.35,.014),[m.x*.75+.004,d.y+.012,m.z*.75],[ex,fc.y-.003,ez]],0x263e43,.001,this.wireGroup,'esc',`gnd-${i}-${out}`);
+    }
   }
   standOffs(m,base,key){for(const x of[-m.width/2+.004,m.width/2-.004])for(const z of[-m.length/2+.004,m.length/2-.004])this.cyl(.0025,.0025,m.bottom-base,0xbca15e,m.x+x,(m.bottom+base)/2,m.z+z,this.model,key,8);}
   controller(p){const m=this.layout.mounts.fc,g=new T.Group();g.position.set(m.x,m.y,m.z);this.model.add(g);this.parts.fc=g;this.standOffs(m,this.layout.deck.y,'fc');
@@ -94,14 +123,21 @@ export class Workbench {
     this.box(m.width,m.height,m.length,0x70877c,0,0,0,g,'battery');
     for(const z of[-m.length*.27,m.length*.27])this.box(m.width+.003,m.height+.008,.011,0x2b3d3d,0,0,z,g,'battery');
     this.box(m.width*.75,.001,.03,0xe5d8b2,0,m.height/2+.001,0,g,'battery');
-    this.wire([[.009,m.y,m.z-m.length/2],[.032,m.y+.012,m.z-m.length/2-.01],[.028,.008,0]],0xc26244,.002,this.wireGroup,'battery','battery-positive');
-    this.wire([[.015,m.y,m.z-m.length/2],[.039,m.y+.01,m.z-m.length/2-.01],[.034,.008,0]],0x263b40,.002,this.wireGroup,'battery','battery-negative');
+    if(this.state.type==='quad'){
+      if(this.pdbWiring)for(const [polarity,color,x]of [['positive',0xd75843,-.008],['negative',0x26363d,.008]]){
+        const end=this.pdbWiring.input[polarity],edgeZ=Math.min(m.z-m.length/2-.012,end[2]-.025);
+        const lead=this.wire([[x,m.y,m.z-m.length/2],[x,m.y,edgeZ],[end[0],this.layout.deck.y+.012,edgeZ],end],color,.0023,this.wireGroup,'pdb','battery-'+polarity);lead.userData.batteryPower={polarity,end};
+      }
+    }else{
+      this.wire([[.009,m.y,m.z-m.length/2],[.032,m.y+.012,m.z-m.length/2-.01],[.028,.008,0]],0xc26244,.002,this.wireGroup,'battery','battery-positive');
+      this.wire([[.015,m.y,m.z-m.length/2],[.039,m.y+.01,m.z-m.length/2-.01],[.034,.008,0]],0x263b40,.002,this.wireGroup,'battery','battery-negative');
+    }
   }
   motor(p,x,y,z,i){const m=p.motor,group=new T.Group();group.position.set(x,y,z);this.model.add(group);const r=m.diameter/2000,h=m.height/1000;this.cyl(r*.85,r*.9,.005,0x2c3430,0,0,0,group);const rotor=new T.Group();group.add(rotor);this.cyl(r,r,h*.78,m.color,0,h*.5,0,rotor);this.cyl(r*.96,r*.98,.003,0x333e35,0,h*.9,0,rotor);this.cyl(.003,.003,.013,0xbac5b5,0,h+.004,0,rotor);for(let k=0;k<10;k++){const a=k*Math.PI/5;this.box(.003,h*.5,.001,0x26332d,Math.cos(a)*(r+.0002),h*.5,Math.sin(a)*(r+.0002),rotor,'motor');}this.motorMeshes[i]={group,rotor,prop:null};return group;}
   propeller(p,parent,x,y,z,i){const prop=p.prop,group=new T.Group();group.position.set(x,y,z);parent.add(group);const r=prop.diameter*.0254/2;this.cyl(.006,.006,.004,(p.material?.color??0xa7b4ac),0,0,0,group,'prop',12);for(let j=0;j<prop.blades;j++){const shape=new T.Shape();shape.moveTo(.004,-.003);shape.bezierCurveTo(r*.35,-r*.15,r*.8,-r*.12,r,-.006);shape.quadraticCurveTo(r*1.03,.002,r*.86,.008);shape.bezierCurveTo(r*.5,r*.16,r*.22,r*.12,.004,.003);shape.closePath();const g=new T.ExtrudeGeometry(shape,{depth:.0015,bevelEnabled:false,curveSegments:6});g.rotateX(-Math.PI/2);const blade=this.mesh(g,this.material((p.material?.color??0xa7b4ac),.08,.5),group,'prop');blade.rotation.y=j*Math.PI*2/prop.blades;blade.rotation.z=this.state.directions[i]*.05;}this.propMeshes.push(group);if(this.motorMeshes[i])this.motorMeshes[i].prop=group;}
   extraParts(p){
     const {mounts:m,deck:d}=this.layout;
-    if(this.state.extras.includes('gps')){const g=m.gps;this.box(.022,.004,.024,0x344c48,g.x,g.baseY+.002,g.z,this.model,'extras');this.cyl(.0024,.0024,g.height,0x637e70,g.x,g.baseY+g.height/2,g.z,this.model,'extras',8);this.cyl(.017,.017,.007,0xe2e3c8,g.x,g.y,g.z,this.model,'extras');this.cyl(.009,.009,.001,0xb6c7a6,g.x,g.y+.004,g.z,this.model,'extras');
+    if(this.state.extras.includes('gps')){const g=m.gps;if(this.state.type==='quad'&&g.x<-d.width/2)this.box(.032,.003,.024,0x344c48,-d.width/2-.001,g.baseY+.0015,g.z,this.model,'extras');this.box(.022,.004,.024,0x344c48,g.x,g.baseY+.002,g.z,this.model,'extras');this.cyl(.0024,.0024,g.height,0x637e70,g.x,g.baseY+g.height/2,g.z,this.model,'extras',8);this.cyl(.017,.017,.007,0xe2e3c8,g.x,g.y,g.z,this.model,'extras');this.cyl(.009,.009,.001,0xb6c7a6,g.x,g.y+.004,g.z,this.model,'extras');
       if(p.fc&&this.state.links?.gps){const f=m.fc;this.wire([[g.x,g.y-.004,g.z],[g.x+.005,d.y+.009,g.z],[f.x-f.width/2,f.y,f.z-.015]],0x459b70,.0011,this.wireGroup,'extras','gps-link');}}
     if(this.state.extras.includes('telemetry')){const t=m.telemetry;this.box(.026,.004,.038,0x465c50,t.x,t.baseY-.002,t.z,this.model,'extras');this.box(.016,.007,.029,0x537c62,t.x,t.y,t.z,this.model,'extras');this.cyl(.0013,.0013,.075,0x263837,t.x,t.y+.04,t.z+.009,this.model,'extras',6);}
     if(this.state.extras.includes('camera')){const c=m.camera,cy=c.y+(this.state.type==='plane'?0:.006);if(this.state.type!=='plane')this.box(.025,.016,.016,0x536b5b,0,c.y,c.z+.015,this.model,'extras');const housing=this.box(.027,.023,.024,0x304c4c,c.x,cy,c.z,this.model,'extras');housing.userData.cameraHousing=true;const lens=this.cyl(.008,.008,.012,0x203139,c.x,cy,c.z-.017,this.model,'extras');lens.rotation.x=Math.PI/2;lens.userData.cameraLens=true;}
