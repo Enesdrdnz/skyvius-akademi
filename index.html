@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27; &#x27;sha256-BaSlWDwqgg+U4bMOSz9qGSgvx2rxz+eL7YsuVcH57Uo=&#x27; &#x27;sha256-9Q0WyRUFs62QlAwya/yLBZFm1MOglO2NcL8Aiad6WvM=&#x27; &#x27;sha256-Oiw04y4deqa+ISboa6iZoIcwutq08MrOg++Jo8LlC2M=&#x27; https://www.youtube.com https://www.youtube-nocookie.com; script-src-attr &#x27;none&#x27;; style-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;; font-src &#x27;self&#x27;; img-src &#x27;self&#x27; data: blob: https://i.ytimg.com; connect-src &#x27;self&#x27; https://xwgowagywzozzeebmcyw.supabase.co https://www.youtube.com https://www.youtube-nocookie.com; frame-src &#x27;self&#x27; https://www.youtube-nocookie.com https://www.youtube.com; media-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;self&#x27;">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27; &#x27;sha256-BaSlWDwqgg+U4bMOSz9qGSgvx2rxz+eL7YsuVcH57Uo=&#x27; &#x27;sha256-ZA1vOUD+9FAbLaGPnoJSk4KWgMsytLF+W9pW+AyW3AM=&#x27; &#x27;sha256-I+UG0jdk0q8kEUN0Hq5sfs59vD0kj4o9LldGTT3k7bY=&#x27; https://www.youtube.com https://www.youtube-nocookie.com; script-src-attr &#x27;none&#x27;; style-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;; font-src &#x27;self&#x27;; img-src &#x27;self&#x27; data: blob: https://i.ytimg.com; connect-src &#x27;self&#x27; https://xwgowagywzozzeebmcyw.supabase.co https://www.youtube.com https://www.youtube-nocookie.com; frame-src &#x27;self&#x27; https://www.youtube-nocookie.com https://www.youtube.com; media-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;self&#x27;">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -978,6 +978,22 @@ footer .foot a:hover{color:var(--text)}
 @media(max-width:600px){:root .etkilesim-ders iframe{height:1100px!important}}
 @media(max-width:600px){:root .baslangic-sozluk{grid-template-columns:1fr}:root .ders .ogrenme-giris{padding:16px}:root .ders .ogrenme-giris p{font-size:20px}}
 </style>
+<style id="profil-takim-duzeni">
+.hs-ek-profil{margin:24px 0;padding-top:16px;border-top:1px solid var(--line)}
+.hs-ek-profil h3{font-size:1.1rem}
+.tk-gorev-form{min-width:390px}
+.tk-gorev-form fieldset{border:0;margin:0;padding:0;min-width:0;display:grid;grid-template-columns:minmax(170px,2fr) minmax(120px,1fr) auto;gap:10px;align-items:end}
+.tk-gorev-form .field{margin:0}
+.tk-gorev-form label{display:block;font-size:.85rem}
+.tk-gorev-form input{width:100%;max-width:100%}
+.tk-gorev-form [role="status"]{display:block;grid-column:1/-1}
+.tk-gorev-form [role="status"]:empty{display:none}
+.tk-atama-onayi{border:1px solid var(--line);padding:16px;margin:16px 0}
+
+:root .hs-gelismis{border-top:1px solid var(--line);padding-top:14px;margin-top:18px}
+:root .hs-gelismis > summary{cursor:pointer;color:var(--muted);font-weight:600}
+:root .hs-gelismis > summary:hover{color:var(--text)}
+:root .hs-gelismis .hs-sil{border-top:0;padding-top:14px}</style>
 </head>
 <body>
 <header class="bar gutter">
@@ -1062,7 +1078,7 @@ var DAL_ACIKLAMA = {"ot":["Otonom","Drone'u kodla yönet: MAVSDK, ROS 2, PID, g�
 var DERS = {"p1":1,"p2":1,"p3":1,"p4":1,"h01":1,"h02":1,"h03":1,"h04":1,"h05":1,"h06-ot":1,"h07-ot":1,"h08-ot":1,"h09-ot":1,"h10-ot":1,"h11-ot":1,"h12-ot":1,"h13-ot":1,"h14-ot":1,"h06-gi":1,"h07-gi":1,"h08-gi":1,"h09-gi":1,"h10-gi":1,"h11-gi":1,"h12-gi":1,"h13-gi":1,"h14-gi":1,"h15":1,"h16":1,"h17":1,"h18":1,"h19":1,"h20":1,"h21":1,"h22":1,"h23":1};
 var HIZMET = {"ad":"Birebir destek","linkedin":"https://www.linkedin.com/in/enesdurudeniz/","eposta":"info@skyvius.com.tr","form":"","satici":"","baslik":"Takıldığın yerde yanındayız","giris":"Skyvius Akademi herkese açık ve ücretsiz, öyle de kalacak. Daha yakından yardım isteyen takımlara, okullara ve kulüplere birebir destek ve atölye sunuyoruz. Eğitim uçağı kiti de yolda.","not":["Skyvius Akademi herkese açık: modüller, videolar, kodlar ve görevler ücretsiz.","Skyvius takımının öğrencilerine mentor saatleri, atölyeler ve teslim geri bildirimi zaten ücretsiz. Takım üyelerinden ücret alınmaz."],"kart":[{"t":"Takım görüşmesi","p":"Takımınla bir saat oturup takıldığınız yere birlikte bakalım: kurulum, kod, simülasyon ya da model eğitimi.","c":["Online","60 dk","1–6 kişi"],"u":"Ücretli. Ücreti görüşmeden önce açıkça yazarız."},{"t":"Toplu atölye","p":"Okulunda ya da kulübünde bir günlük uygulamalı atölye. Herkes kendi bilgisayarında çalışır.","l":["Simülasyonda ilk otonom uçuş","YOLO ile nesne tespiti","ROS 2'ye giriş"],"c":["Yüz yüze ya da online","10–30 kişi"],"u":"Ücretli. Kişi sayısına göre baştan yazarız."},{"t":"Sabit kanat eğitim uçağı kiti","y":"Çok yakında","p":"Kendi uçağını topla ve ArduPilot ile uçur. Akademinin modülleriyle birlikte kullanılacak şekilde hazırlanıyor.","l":["Montaj videosu ve kontrol listesi"],"c":["Ön sipariş"],"u":"Ücretli. Fiyatı ön siparişte yazarız.","k":"Sabit kanat eğitim uçağı kiti ön siparişi"}],"adim":["E-postayla ya da LinkedIn'den yaz: kim olduğunu ve neye ihtiyacın olduğunu anlat.","İki iş günü içinde dönüp tarihi ve ücreti açıkça yazarız.","Uygunsa başlarız. Ödeme siteden alınmaz, ayrıntısını başlamadan önce yazarız."],"sss":[["Akademi ileride ücretli olacak mı?","Hayır. Skyvius Akademi herkese açık. Modüller, videolar ve görevler ücretsiz kalacak."],["Skyvius takımındayım, ücret ödeyecek miyim?","Hayır. Takım öğrencilerine mentor saatleri, atölyeler ve teslim geri bildirimi zaten ücretsiz veriliyor. Bu sayfadaki hizmetler takım dışındaki takımlar, okullar ve kulüpler için."],["Neden ücret alıyorsunuz?","Birebir ayırdığımız zamanı, yol masrafını ve malzemeyi karşılamak için. Akademinin kendisi bundan etkilenmez."],["Yarışma raporumuzu ya da kodumuzu yazar mısınız?","Hayır. Yol gösteririz, iş takımın kendisinin olur."]],"son":"Bir sorun mu var, yoksa sadece merak mı ediyorsun? Yazmak seni bir şeye bağlamaz."};
 var HESAP = {"url":"https://xwgowagywzozzeebmcyw.supabase.co","anahtar":"sb_publishable_mf4ZmJ9s7WDXjfsAFkwBvA_Tl1R3E-Q","sorumlu":"Enes Durudeniz","eposta":"info@skyvius.com.tr"};
-var GIZLILIK = {"ozet":["Google hesabından adın ve e-posta adresin alınır. Kullanacağın ad soyadı kendin kaydedersin. Takımını yazarsın ya da bağımsız olduğunu seçersin.","İlerlemen, test sonuçların, soruların, teslimlerin ve giriş günlerin hesabına kaydedilir. İstersen profil fotoğrafı eklersin.","Veriler Supabase'in Almanya'daki (Frankfurt) sunucularında saklanır. Satılmaz, reklam için kullanılmaz.","Hesabını istediğin an Hesabım penceresinden silebilirsin. Bütün kayıtların silinir."],"bolumler":[["Ne zaman giriş gerekir?","Yol haritası, kaynak kütüphanesi ve genel sayfalar hesapsız açıktır. Modüllerin içeriği (konu anlatımı, kurulum, örnek kod, görevler), testler ve soru-cevap için Google ile giriş gerekir. Giriş yapınca çalışman hesabında saklanır."],["Hangi verileri saklıyoruz?","Google ile giriş yaptığında adın ve e-posta adresin. Senin kaydettiğin ad soyad, takım adı ya da bağımsız olduğun bilgisi. Ad soyadını ve takımını Hesabım penceresinden güncelleyebilirsin. Siteyi kullandıkça: hesabının açıldığı ve son girdiğin zaman, modül ilerlemen ve notların, test puanların (ilk ve en iyi sonuç, deneme sayısı), forumda yazdıkların, teslim ettiğin bağlantılar ve onlara yazılan geri bildirimler, Skyvius dönem üyeliği isteğin. Google şifreni hiçbir zaman görmeyiz."],["Ne için kullanıyoruz?","Hesabını açmak, ilerlemeni saklamak, testleri puanlamak ve Skyvius dönem üyelerinin teslimlerine geri bildirim vermek için. Kişi bilgisi içermeyen toplu sayılar (kayıtlı kişi sayısı, takımlara göre dağılım, tamamlanan modüller, test ortalamaları) programı geliştirmek ve destekçilere rapor vermek için kullanılır."],["Kim görür?","Kendi kayıtlarını sen görürsün. Yöneticiler bütün kullanıcıların adını, e-posta adresini, takımını, profil fotoğrafını, ilerleme özetini, giriş sayılarını, teslimlerini ve test sonuçlarını görebilir. Mentorlar yalnız yöneticinin kendilerine atadığı takımın üyelerinde bu bilgileri görür. Özel çalışma notların raporda paylaşılmaz. Gönderdiğin araştırma cevapları ve mentora notlar teslimin parçasıdır. Forumda yalnız adın ve soyadının baş harfi görünür, örneğin “Ayşe Y.”."],["Profil fotoğrafı ve etkinlik","Fotoğraf isteğe bağlıdır. Tek bir fotoğraf, en fazla 512 × 512 piksel ve 256 KB olarak özel depoda tutulur; yenisi eskisinin üzerine yazılır. Profilinden kaldırabilirsin. Ziyaret sayısı, Google ile giriş sayısı ve aktif olduğun günler, hesabındaki ilerlemeyi değerlendirmek için tutulur. Siteye 30 dakika ara verdikten sonra dönüş yeni ziyaret sayılır; kısa aralıklarla yenilemeler tek ziyaret sayılır. Oturum yenileme Google girişi sayılmaz. Ölçüm başlamadan önceki girişler tahmin edilmez. IP adresi veya cihaz parmak izi bu kayıtlara eklenmez. Son bir yıllık etkinlik ayrıntıları tutulur; eski kayıtlar sonraki kullanımda temizlenir."],["Nerede saklanır?","Supabase'in Almanya'daki (Frankfurt) sunucularında. Verilerin yurt dışında saklandığı için onayın bu aktarımı da kapsar. Tarayıcında oturum bilgin ve hesabına ait ilerleme, not ve son test denemelerinin bir kopyası tutulur. Çıkış yaptığında veya hesabını sildiğinde bu yerel kopya temizlenir. Site reklam ya da takip çerezi kullanmaz. Ziyaret sayacı yalnız günlük açılış sayısını tutar; kim olduğunu bilmez, çerez kullanmaz."],["Başka kimlere bağlanır?","Yazı tipleri ve sayfanın kendi dosyaları sitenin kendisinden gelir. Site GitHub Pages'te barındırılır; GitHub, güvenlik için ziyaretçilerin IP adresini kaydeder. Google ile giriş yaparken Google'ın giriş sayfasına gidersin. Video küçük resimleri YouTube'dan yüklenir, bu sırada IP adresin YouTube'a (Google) ulaşır. Video oynatıcı yalnız sen bir videoyu başlatınca yüklenir ve YouTube'un gelişmiş gizlilik modunda (youtube-nocookie.com) açılır. Dış bağlantılar (GitHub, WhatsApp, kaynak siteler) yalnız sen tıklayınca açılır."],["Ne kadar süre?","Hesabın açık kaldığı sürece. Hesabını silince profil fotoğrafın, profilin, ilerlemen, test sonuçların, soruların, cevapların, teslimlerin ve giriş kayıtların silinir."],["Hakların","6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 11. maddesine göre verilerini öğrenme, düzeltilmesini ya da silinmesini isteme ve işlenmesine itiraz etme hakkın var. Hesabını Hesabım penceresinden kendin silebilirsin. Diğer talepler için aşağıdaki adrese yaz."]]};
+var GIZLILIK = {"surum":2,"tarih":"31 Ekim 2026","ozet":["Google hesabından adın ve e-posta adresin alınır. Kullanacağın ad soyadı kendin kaydedersin. Takımını yazarsın ya da bağımsız olduğunu seçersin.","İlerlemen, test sonuçların, soruların, teslimlerin ve giriş günlerin hesabına kaydedilir. Kullanıcı adı, eğitim durumu, okul, bölüm, sınıf, fotoğraf ve LinkedIn adresi isteğe bağlıdır; sonradan kaldırabilirsin.","Takım kaptanını yalnız Akademi yöneticisi belirler. Kaptan kendi takımındaki üyelerin adını, takım görevini ve departmanını görür ve görevlerini düzenler. E-posta, eğitim bilgileri ve özel notlar kaptana açılmaz.","Veriler Supabase'in Almanya'daki (Frankfurt) sunucularında saklanır. Satılmaz, reklam için kullanılmaz.","Hesabını Hesabım veya Profilim içindeki Gelişmiş hesap ayarları bölümünden silebilirsin. Bütün kayıtların silinir."],"bolumler":[["Ne zaman giriş gerekir?","Yol haritası, kaynak kütüphanesi ve genel sayfalar hesapsız açıktır. Modüllerin içeriği (konu anlatımı, kurulum, örnek kod, görevler), testler ve soru-cevap için Google ile giriş gerekir. Giriş yapınca çalışman hesabında saklanır."],["Hangi verileri saklıyoruz?","Google ile giriş yaptığında adın ve e-posta adresin. Senin kaydettiğin ad soyad, takım adı ya da bağımsız olduğun bilgisi. Kullanıcı adı, eğitim durumu, okul, bölüm veya alan, sınıf veya öğrenim yılı, profil fotoğrafı ve LinkedIn adresi tamamen isteğe bağlıdır; boş bırakabilir veya sonradan kaldırabilirsin. Bilgilerini Hesabım penceresinden güncelleyebilirsin. Takım kaptanı ve takım içi görev/departman atamaları, bunları yapan hesap ve son güncelleme zamanı saklanır. Siteyi kullandıkça: hesabının açıldığı ve son girdiğin zaman, modül ilerlemen ve notların, test puanların (ilk ve en iyi sonuç, deneme sayısı), forumda yazdıkların, teslim ettiğin bağlantılar ve onlara yazılan geri bildirimler, Skyvius dönem üyeliği isteğin. Google şifreni hiçbir zaman görmeyiz."],["Ne için kullanıyoruz?","Hesabını açmak, profilini ve eğitim bilgilerini düzenli tutmak, ilerlemeni saklamak, testleri puanlamak ve Skyvius dönem üyelerinin teslimlerine geri bildirim vermek için. Takım görevi ve departman bilgileri takımın görev dağılımını düzenlemek için kullanılır. İsteğe bağlı alanları doldurmaman ücretsiz eğitimden yararlanmanı etkilemez. Kişi bilgisi içermeyen toplu sayılar (kayıtlı kişi sayısı, takımlara göre dağılım, tamamlanan modüller, test ortalamaları) programı geliştirmek ve destekçilere rapor vermek için kullanılır."],["Kim görür?","Kendi kayıtlarını sen görürsün. Yöneticiler bütün kullanıcıların adını, e-posta adresini, takımını, isteğe bağlı profil ve eğitim bilgilerini, ilerleme özetini, giriş sayılarını, teslimlerini ve test sonuçlarını görebilir. Mentorlar yalnız yöneticinin kendilerine atadığı takımın üyelerinde bu bilgileri görür. Kaptanlık ayrı bir takım görevidir: kaptan yalnız kendi takımındaki üyelerin adını, takım görevini ve departmanını görüp düzenleyebilir. Bu görev e-posta, eğitim bilgisi, giriş sayısı, test sonucu, teslim veya özel not okuma yetkisi vermez. Bir kişi ayrıca mentor veya yönetici olarak atanmışsa o Akademi rolünün erişimi ayrıca geçerlidir. Özel çalışma notların raporda paylaşılmaz. Gönderdiğin araştırma cevapları ve mentora notlar teslimin parçasıdır. Forumda yalnız adın ve soyadının baş harfi görünür, örneğin “Ayşe Y.”."],["Takım ve görev bilgileri","Takım adı kullanıcı beyanıdır; resmî üyelik doğrulaması sayılmaz. Kaptanı yalnız Akademi yöneticisi belirler. Kaptanlık ve takım görevleri Akademi yöneticiliği veya mentorluğu vermez. Takımını değiştirirsen önceki kaptanlığın ve görev/departman kaydın kaldırılır; kişisel eğitim ilerlemen korunur. Bağımsız öğrenenlerin bir takıma katılması gerekmez."],["Gizlilik bildiriminin güncellenmesi","Bu bildirim 31 Ekim 2026 tarihinde güncellendi; sürümü 2'dir. Yeni sürüm ilk açılışta mevcut hesaplara da gösterilir. Okuduğunu belirttiğinde sürüm ve tarih hesabına kaydedilir; aynı sürüm sonraki girişte tekrar sorulmaz. İsteğe bağlı alanları doldurman istenmez. Önceki gizlilik onayının zamanı ayrıca korunur."],["Profil fotoğrafı ve etkinlik","Fotoğraf isteğe bağlıdır. Tek bir fotoğraf, en fazla 512 × 512 piksel ve 256 KB olarak özel depoda tutulur; yenisi eskisinin üzerine yazılır. Profilinden kaldırabilirsin. Ziyaret sayısı, Google ile giriş sayısı ve aktif olduğun günler, hesabındaki ilerlemeyi değerlendirmek için tutulur. Siteye 30 dakika ara verdikten sonra dönüş yeni ziyaret sayılır; kısa aralıklarla yenilemeler tek ziyaret sayılır. Oturum yenileme Google girişi sayılmaz. Ölçüm başlamadan önceki girişler tahmin edilmez. IP adresi veya cihaz parmak izi bu kayıtlara eklenmez. Son bir yıllık etkinlik ayrıntıları tutulur; eski kayıtlar sonraki kullanımda temizlenir."],["Nerede saklanır?","Supabase'in Almanya'daki (Frankfurt) sunucularında. Verilerin yurt dışında saklandığı için onayın bu aktarımı da kapsar. Tarayıcında oturum bilgin ve hesabına ait ilerleme, not ve son test denemelerinin bir kopyası tutulur. Çıkış yaptığında veya hesabını sildiğinde bu yerel kopya temizlenir. Site reklam ya da takip çerezi kullanmaz. Ziyaret sayacı yalnız günlük açılış sayısını tutar; kim olduğunu bilmez, çerez kullanmaz."],["Başka kimlere bağlanır?","Yazı tipleri ve sayfanın kendi dosyaları sitenin kendisinden gelir. Site GitHub Pages'te barındırılır; GitHub, güvenlik için ziyaretçilerin IP adresini kaydeder. Google ile giriş yaparken Google'ın giriş sayfasına gidersin. Video küçük resimleri YouTube'dan yüklenir, bu sırada IP adresin YouTube'a (Google) ulaşır. Video oynatıcı yalnız sen bir videoyu başlatınca yüklenir ve YouTube'un gelişmiş gizlilik modunda (youtube-nocookie.com) açılır. Dış bağlantılar (GitHub, WhatsApp, kaynak siteler) yalnız sen tıklayınca açılır."],["Ne kadar süre?","Hesabın açık kaldığı sürece. Hesabını silince profil fotoğrafın, profilin, ilerlemen, test sonuçların, soruların, cevapların, teslimlerin ve giriş kayıtların silinir."],["Hakların","6698 sayılı Kişisel Verilerin Korunması Kanunu'nun 11. maddesine göre verilerini öğrenme, düzeltilmesini ya da silinmesini isteme ve işlenmesine itiraz etme hakkın var. Hesabını Hesabım veya Profilim içindeki Gelişmiş hesap ayarları bölümünden kendin silebilirsin. Diğer talepler için aşağıdaki adrese yaz."]]};
 var TOPLULUK = {"whatsapp":"https://chat.whatsapp.com/JBDYU2vksaw3HZnd7qM2r2","etiket":"WhatsApp grubu","baslik":"İHA TAKIMLARI TOPLULUĞU","metin":"İHA yarışmacıları için bir topluluk: tecrübelerimizi aktarıyor, duyurulardan ve fırsatlardan birbirimizi haberdar ediyoruz."};
 var ARA = {"p1":"Önce iki fikri netleştirelim Program nedir? Değişkenler Veri türleri Koşullar: program karar verir Dosyadan çıktıya: Python neyi çalıştırıyor? Küçük bir örnekle düşünelim Metinler ve f-string Operatörler","p2":"Önce iki fikri netleştirelim Neden veri yapısı? Liste Tuple ve sözlük for döngüsü while döngüsü Döngüyü bir tabloyla izleyelim Küçük bir örnekle düşünelim List comprehension Hangi yapı ne zaman?","p3":"Önce iki fikri netleştirelim Fonksiyon: bir işe isim vermek Sınıf ve nesne Dosyalar Hatalar ve try / except Bir dosya, üç alan ve iki ayrı sorumluluk Küçük bir örnekle düşünelim JSON","p4":"Önce iki fikri netleştirelim NumPy: döngüsüz hesap Pandas: tablo hâlinde veri Matplotlib: grafikle düşünmek Veriyi değiştirmeden önce problemi teşhis et Küçük bir örnekle düşünelim","h01":"Önce iki fikri netleştirelim İHA nedir? Bir quadcopter nasıl uçar? Bileşenler ve aralarındaki bağlantı Kuvvetler ve sınırlar aynı araca göre yorumlanır Küçük bir örnekle düşünelim Sabit kanat nasıl uçar? Uçuş süresi ve itki/ağırlık hesabı","h02":"Önce iki fikri netleştirelim Otopilot ne yapar? PX4 ile ArduPilot Uçuş modları MAVLink: araçların ortak dili Drone programlama kütüphaneleri Komut vermek, kabul almak ve sonucu görmek Küçük bir örnekle düşünelim Simülasyon ortamları Dokümantasyon nasıl okunur?","h03":"Önce iki fikri netleştirelim Neden simülasyon? Kurduğun sistemin parçaları Üç kurulum yolu Kurulumda üç pencere, üç ayrı kanıt Küçük bir örnekle düşünelim","h04":"Önce iki fikri netleştirelim Yer kontrol istasyonu ne işe yarar? QGroundControl'ün ekranları Uçuşa hazır mı? Görev planlamak Geofence ve failsafe Plan dosyası, araçtaki görev ve uçuş aynı şey değil Küçük bir örnekle düşünelim Parametreler","h05":"Önce iki fikri netleştirelim Simülatör ne hesaplar? SDF: dünyanın tarifi pose ve koordinat sistemi Araç modelleri ve kamera Simülasyon gerçeği ne kadar yansıtır? Bir kutunun merkezi nerede? Küçük bir örnekle düşünelim Dal seçimi","h06-ot":"Önce iki fikri netleştirelim MAVSDK nedir? Bağlantı adresi async ve await Eklentiler Bir uçuşun adımları Hatalar ve güvenlik Beklenen yanıt ile beklenen fiziksel durum Küçük bir örnekle düşünelim Metreden enlem-boylama","h07-ot":"Önce iki fikri netleştirelim Görev mi, offboard mu? Offboard'un kuralları Setpoint türleri ve NED Sekizin denklemi Gecikme ve feed-forward Sapma nasıl ölçülür? Yolun şekli ile yolun zamanlamasını ayıralım Küçük bir örnekle düşünelim","h08-ot":"Önce iki fikri netleştirelim ROS 2 nedir? Temel kavramlar PX4 ROS 2'ye nasıl bağlanır? QoS: sessiz bir tuzak Aynı CSV satırındaki veriler aynı anda ölçülmüş olmayabilir Küçük bir örnekle düşünelim","h09-ot":"Önce iki fikri netleştirelim MAVSDK'dan ROS 2'ye Üç mesaj Doğru sıra Durum makinesi Kalkış ve iniş Çalışan ROS node’u ile karar sınıfının yeri Küçük bir örnekle düşünelim","h10-ot":"Önce iki fikri netleştirelim Kontrol problemi P: hatayla orantılı komut I: hatanın birikimi D: hatanın değişim hızı Tepkiyi ölçmek PID toplamını üç adımda elle hesaplayalım Küçük bir örnekle düşünelim Drone'da iç içe döngüler Feed-forward kısaca","h11-ot":"Önce iki fikri netleştirelim Güdüm, navigasyon ve kontrol Açılarla çalışmak Pure pursuit Proportional navigation İki yöntemi karşılaştırmak Gerçekçi bir sınır: dönüş hızı Sabit görüş hattında yaklaşma koşulu Küçük bir örnekle düşünelim Güdüm ve yol planlama","h12-ot":"Önce iki fikri netleştirelim Yol planlama ne işe yarar? Haritayı ızgaraya çevirmek Dijkstra: her yöne eşit bak A*: hedefe doğru bak Izgara yetmediğinde: RRT g, h ve f sayılarını küçük bir aramada okuyalım Küçük bir örnekle düşünelim RRT*: dalları yeniden bağlamak Hangisini ne zaman?","h13-ot":"Önce iki fikri netleştirelim Neden birden fazla İHA? Her araca ayrı bağlantı Formasyon yöntemleri Ofseti liderle döndürmek Takipçiyi yerinde tutmak Kimlik, bağlantı ve ortak koordinat Küçük bir örnekle düşünelim Merkezsiz sürü: boids Ne ölçeceksin?","h14-ot":"Önce iki fikri netleştirelim Log neden var? Log türleri Bir log neleri kapsar? Bir kaza nasıl okunur? Gözlemden sonuca giderken eksik halkayı yaz Küçük bir örnekle düşünelim","h06-gi":"Önce iki fikri netleştirelim Görüntü bir sayı tablosudur Renk uzayları: RGB ve HSV Maske ve gürültü temizliği Konturdan şekle Bir pikselin maskeye girme kararını okuyalım Küçük bir örnekle düşünelim Klasik yöntem nerede yetmez?","h07-gi":"Önce iki fikri netleştirelim Görüntüden ne isteriz? Bir dedektörün çıktısı Görüntü modelden nasıl geçer? COCO ve drone görüntüsü Model boyutları Model çıktısını ve ölçüm koşulunu birlikte oku Küçük bir örnekle düşünelim","h08-gi":"Önce iki fikri netleştirelim Model veriden öğrenir Sınıfları tanımlamak Çeşitlilik YOLO etiket biçimi train, val, test GSD: hedef kaç piksel? Dataset kartı Bölme oranından önce çekim gruplarını ayır Küçük bir örnekle düşünelim","h09-gi":"Önce iki fikri netleştirelim Eğitim ne yapar? Sıfırdan değil, hazır ağırlıklardan Eğitim ayarları Augmentation Eğitim eğrilerini okumak Kayıp, doğrulama metriği ve ağırlık dosyası Küçük bir örnekle düşünelim","h10-gi":"Önce iki fikri netleştirelim Doğru tespit ne demek? Precision ve recall Güven eşiği ve PR eğrisi F1 ve eşik seçimi Confusion matrix Hata analizi Ölçüm ne kadar güvenilir? Yanlış sınıf bir FP ve bir FN üretebilir Küçük bir örnekle düşünelim AP, mAP50 ve mAP50-95","h11-gi":"Önce iki fikri netleştirelim Tespit ile takip arasındaki fark Kalman filtresi: tahmin et, düzelt Eşleştirme ByteTrack'in fikri Bir izin ömrü İz numarası nesnenin gerçek kimliği değildir Küçük bir örnekle düşünelim BoT-SORT ve OC-SORT Takibi ölçmek","h12-gi":"Önce iki fikri netleştirelim Bu hafta neden? Resim, modelin gözünde bir sayı tablosu Evrişim: küçük bir pencereyi kaydırmak Katman katman: kenardan nesneye YOLO bir CNN'in üstüne nasıl kurulur? Boyut, parametre ve algılama alanı farklı sayılardır Küçük bir örnekle düşünelim Transformer: her parça diğerlerine bakar","h13-gi":"Önce iki fikri netleştirelim Hız ile çözünürlük arasında ROI ile iki modlu çalışma Başka hızlandırma yolları Kamera modeli Distorsiyon Önce koordinatı geri taşı, sonra kalibrasyonu yorumla Küçük bir örnekle düşünelim","h14-gi":"Önce iki fikri netleştirelim Neden ROS 2? Görüntü mesajı Tespit mesajı Zaman damgası ve gecikme Kuyruk tuzağı Mesaj küçük olsa da bilgi eski olabilir Küçük bir örnekle düşünelim","h15":"Önce iki fikri netleştirelim İki dal, bir görev ArUco marker Pikselden metreye, metreden hıza İniş mantığı Algılama ile kontrol arasındaki sözleşme Küçük bir örnekle düşünelim Hangi yön nereye? İniş hatasını ölçmek ArUco'dan renkli kareye","h16":"Önce iki fikri netleştirelim Problem: hedefi kovalamak Pure pursuit: burnu hedefe çevir Lead pursuit: hedefin önüne nişan al Lag pursuit: hedefin gerisine nişan al Pikselden açıya Pikselden çıkan açı ile aracın hareketini ayır Küçük bir örnekle düşünelim Proportional navigation: görüş hattını döndürme","h17":"Önce iki fikri netleştirelim İki hafta, bir görev Kalman filtresi, matrislerle Q ve R: modele mi, ölçüme mi? Matristen önce tek bir Kalman düzeltmesi Küçük bir örnekle düşünelim","h18":"Önce iki fikri netleştirelim Çalışan kod, teslim edilmiş iş değildir Tekrar edilebilirlik Sayıyla sonuç Ekran kaydı Bir deney kimliği bütün kanıtları birbirine bağlar Küçük bir örnekle düşünelim","h19":"Önce iki fikri netleştirelim Faz 3'ün sonu 10 dakikalık sunum Arayüz sözleşmesi Proje önerisi Aynı hedef için bireysel ve ekipli yol Küçük bir örnekle düşünelim Karma final ekibi Dört final projesi","h20":"Önce iki fikri netleştirelim Uçakta bir bilgisayar JetPack ve Docker TensorRT ne yapar? FP16 ve INT8 Hızı doğru ölçmek Güç modu ve ısı Karttan ölçüme kadar sürüm ve süre zinciri Küçük bir örnekle düşünelim","h21":"Önce iki fikri netleştirelim Videodan kameraya GStreamer boru hattı CSI ve USB kamera Kalibrasyon yeniden Gecikme Rolling ve global deklanşör Kamera kimliği ile ölçüm sınırını kaydet Küçük bir örnekle düşünelim","h22":"Önce iki fikri netleştirelim Görev bilgisayarı ve otopilot Kart modeli belli bir bağlantı tablosu nasıl okunur? Küçük bir örnekle düşünelim","h23":"Önce iki fikri netleştirelim Demo günü ne gösterir? Demo senaryosu Canlı gösterimde risk Sonuçları ölçütle karşılaştırmak Bir iddiadan kanıt dosyasına giden kısa yol Küçük bir örnekle düşünelim Sonra ne olacak?"};
 var IC_HAZIR = {"surum":"667fce67e2","ozet":{"h01":"84c3849264024c28b058f06af50eca29dfe3fd7a2a1dd637b05c033321dbe56a","h02":"eac749678e16ec607595c460366dc99d9b2617ae0842d678cc8ed9ecfeade20d","h03":"2f69f8e7b25b17358c38a5b000b9709726409775796a6b21e54fac5cb0a79e89","h04":"f2b2c9ddc5ab2fdefbeea12587ef5235923d6152e9dc8e1912f2c98818e05e08","h05":"f2b14018c94a6d423a5b8836717d85564f396eba205f566e4042f3d328111c27","h06-gi":"6c05763ee28b9cee9f6b317e47549d676b6403b37c9b96b5172bf2e236ea0ba0","h06-ot":"85ca96d21fe2ca6e7a6d82a7317feb4da55e3ccb458f7fde4630d19de785e0bb","h07-gi":"e5cb7ef1b1111afa6dccbedd1d16b69362d18bbaecaaaa7ace1938575d2556c7","h07-ot":"401e9315cf8b474450eacdeb061515575bb822de5b2e95b30f64bd621093b48b","h08-gi":"5f7e35c7f0f7707b3b32dc393cdd58fd5864d98b71f2366fcdd5dd7d66049fe1","h08-ot":"2f1b94a1b92232d7e6df033889e9c05d7d5238f732657b9a6d48ac08972b7ec0","h09-gi":"7b08e5275880019b0f2c431250ab628637aa7ce9a072ce4513713d7639d5f2a3","h09-ot":"13e790b5c2e203a7b7964da07b03f59dfa6badcb41d1995d09732de9bc1ad901","h10-gi":"bcae960b9bc563a69e811c6fbc355fb5c42f9f51abaf5fef6a797f51f0a00376","h10-ot":"17d2a33c1b52afeb1107eb6a59bde77ae1f1b8a7ea3498e7731eae77c84e156a","h11-gi":"43d08fddf675ae094f3feb19d08df55fac6c7773e60cba57da7ca6f3da9722fa","h11-ot":"872d16df247bfdbaeb79dcf7238437b5c09cb18ad8749da176e843f0c9061ec1","h12-gi":"2850206b1cea8c8cc5c0f2cc43ba3ceba74de771b516bda002bb95a02b41d183","h12-ot":"97757252e7f5ec456b07d2698d24be0c96c01c00f8e2b7f3f7b3d9f28ceed829","h13-gi":"d98e3c3774be7fe361bc4849c06d2e75e13e0e719e48dac1b399284cdf80c240","h13-ot":"1a13d3afb020d06b57345ae7bbcea07bd84e110a105cef198761fa45d4a3e45d","h14-gi":"6160039ecc91a8071e23ef3563e8b926c0471da809736336840be57df1c01437","h14-ot":"c7a0a304d1744971aabb8636d14dbbffc9aee5480d7e45d6356596a572653d29","h15":"d4e55b5e0a8cda2b3c47a01b2311a9674ff42ec79dc011e116c333e91dad7804","h16":"eeb888d404d2fc6a896d3c3ddf1e90ae5e02b1b345e4018533a5a90b39c25df1","h17":"467fee05fbfd9bd2e79de9e381ea41aca7b9411e8f433ef7b9579359943b8da8","h18":"7cd682f05e10dd2bed8a6f8b5023a13dff6a2cd48c96a135e339cc08aa8b370d","h19":"136b10f7af928f56cd0175450dd21a8c1ab04ca8e341bf3e6bdd5d2e8ac690bd","h20":"a41ef2003bbb1ac3813c4d04b8d4d03c303e339f5bf5ae77537c9ed6917ea57f","h21":"bd1ba3d3139c1c1dccbb0d1a3c83cb338630dd888653fd816412208c18704a5a","h22":"bff0bfc335b85f80db18072bfb7dee57b6a7c963b15a225d39ca14bd26162b7a","h23":"5c077983a5f953f01301404e084221714ccb22d744200aba1da5ca3fc8d4d09b","p1":"297910bf30465a2380264c3dada3fd5e3a68e8705c37070751cbf547b674f437","p2":"73abf366b2d6f37509cb093f11f91e09e23bf9c5952c0925f31f52fa479c7e89","p3":"af5bd5b79e412f913f5cd2794e32e925d79f5d191f3fd0fe8a1b76efc9a1c425","p4":"7ee2eb3f6340dad48839514e5a410f6bb13645c892f32c1f9c6da114eefc1184"}};
@@ -2337,9 +2353,8 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
       if (H.surum !== bekci) return;
       H.yukleniyor = false; hesapDegisti();
       if (location.hash !== "#gizlilik") {
-        if (H.profil && !H.profil.ad_onaylandi) {
-          if (!H.profil.aydinlatma) onayAc(); else profilAc(false);
-        } else if (H.yeniGiris && H.profil && !H.profil.aydinlatma) onayAc();
+        if (H.profil && !gizlilikGuncel()) onayAc();
+        else if (H.profil && !H.profil.ad_onaylandi) profilAc(false);
         else takimSor();
       }
       H.yeniGiris = false;
@@ -2428,24 +2443,15 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
     if (!H.profil) { ek(g, el("p", "hata", H.hata || "Hesap bilgisi alınamadı."), ek(el("div", "hs-dugmeler"), dugme("btn sm", "Tekrar dene", profilYukle), dugme("btn ghost sm", "Çıkış yap", cikis))); return; }
     var p = H.profil, dl = el("dl", "hs-bilgi");
     [["Ad soyad", p.ad], ["E-posta", p.eposta], ["Takım", p.takim || "Belirtilmedi"], ["Rol", ROL[p.rol] || p.rol]].forEach(function(x){ dl.appendChild(ek(el("div"), el("dt", null, x[0]), el("dd", null, x[1] || "Yok"))); });
+    profilEkBilgiler(dl, p);
+    if (p.linkedin && linkedinGecerli(p.linkedin)) dl.appendChild(ek(el("div"), el("dt", null, "LinkedIn"), ek(el("dd"), bag(linkedinMetni(p.linkedin), null, "Profili aç", true))));
     ek(g, dl, senkSatiri());
     if (H.bilgi) { var sonuc = el("p", "note", H.bilgi); sonuc.setAttribute("role", "status"); g.appendChild(sonuc); }
     if (!p.ad_onaylandi) g.appendChild(el("p", "note", "Adını ve soyadını kontrol edip kaydet. Google hesabındaki adın farklı olabilir."));
-    if (!p.aydinlatma) g.appendChild(ek(el("p", "note"), el("b", null, "Gizlilik onayın bekliyor. "), "Test çözmek ve ilerlemeni kaydetmek için gerekir."));
+    if (!gizlilikGuncel()) g.appendChild(el("p", "note", p.aydinlatma ? "Gizlilik bildirimi güncellendi. İsteğe bağlı profil alanlarını ve takım görevlerini açıklıyor." : "Gizlilik onayın bekliyor."));
     ek(g, ek(el("div", "hs-dugmeler"), bag("#profil", "btn sm", "Profilim ve ilerlemem"), p.aydinlatma ? dugme("btn ghost sm", "Bilgilerimi güncelle", function(){ profilAc(false); }) : dugme("btn sm", "Bilgilerimi tamamla", onayAc),
-      yetkiliMi() ? bag("#panel", "btn sm", "Panel") : null, dugme("btn ghost sm", "Çıkış yap", cikis), bag("#gizlilik", "btn ghost sm", "Gizlilik metni")));
-    var sil = ek(el("div", "hs-sil"), el("p", "muted", "Hesabını silince profilin, ilerlemen, test sonuçların, soruların, cevapların ve teslimlerin kalıcı olarak silinir."));
-    var hata = el("p", "hata"); hata.hidden = true; hata.setAttribute("role", "alert");
-    var soru = el("div", "hs-onay"); soru.hidden = true;
-    var acB = dugme("btn ghost sm tehlike", "Hesabımı sil", function(){ soru.hidden = false; acB.hidden = true; evet.focus(); });
-    var evet = dugme("btn sm", "Evet, hesabımı sil", function(){
-      evet.disabled = true; hata.hidden = true;
-      fotografSil().then(function(){ return api("rpc/hesabimi_sil", {}); }).then(function(){
-        yerelCikis(); hdlg.close();
-      }, function(e){ evet.disabled = false; hata.hidden = false; hata.textContent = e.message; });
-    });
-    ek(soru, el("p", null, "Emin misin? Bu işlem geri alınamaz."), ek(el("div", "hs-dugmeler"), evet, dugme("btn ghost sm", "Vazgeç", function(){ soru.hidden = true; acB.hidden = false; acB.focus(); })));
-    ek(sil, acB, soru, hata); g.appendChild(sil);
+      yetkiliMi() ? bag("#panel", "btn sm", "Panel") : null, p.takim_kaptani ? bag("#takimim", "btn ghost sm", "Takım görevlerini yönet") : null, dugme("btn ghost sm", "Çıkış yap", cikis), bag("#gizlilik", "btn ghost sm", "Gizlilik metni")));
+    g.appendChild(gelismisHesapAyarlari());
   }
   if (hesapBtn) hesapBtn.addEventListener("click", function(){ H.bilgi = null; hesapIcerik(); hdlg.showModal(); });
   document.getElementById("hesap-x").addEventListener("click", function(){ hdlg.close(); });
@@ -2457,28 +2463,26 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
     var ad = adSoyadMetni(s);
     return ad.length >= 3 && ad.length <= 80 && /^[\p{L}][\p{L}\p{M}'’.-]*( [\p{L}][\p{L}\p{M}'’.-]*)+$/u.test(ad);
   }
-  function profilKaydet(ad, takim, onay){
+  function profilKaydet(ad, takim, onay, linkedin, ekBilgi){
     if (!H.profil || !H.oturum) return Promise.reject(new Error("Önce giriş yap."));
     if (!adSoyadGecerli(ad)) return Promise.reject(new Error("Adını ve soyadını, en fazla 80 karakterle yaz."));
-    var bekci = H.surum, id = H.profil.id;
-    return api("rpc/profil_guncelle", {p_ad:adSoyadMetni(ad), p_takim:takim}).then(function(p){
+    var bekci = H.surum, id = H.profil.id, bilgiler = {};
+    ["kullanici_adi","egitim_durumu","okul","bolum","sinif"].forEach(function(k){ bilgiler[k] = ekBilgi ? ekBilgi[k] || null : H.profil[k] || null; });
+    try { bilgiler.linkedin = linkedinMetni(linkedin === undefined ? H.profil.linkedin : linkedin); } catch (e) { return Promise.reject(e); }
+    var veri = {p_ad:adSoyadMetni(ad), p_takim:takim, p_bilgiler:bilgiler, p_gizlilik:onay === true};
+    return api("rpc/profil_bilgilerini_kaydet", veri).then(function(p){
       if (H.surum !== bekci || !H.profil || H.profil.id !== id || !p || p.id !== id) throw new Error("Oturum değişti. Sayfayı yenile.");
       H.profil = p;
-      if (!onay) return p;
-      return api("rpc/aydinlatma_onayla", {}).then(function(){
-        if (H.surum !== bekci || !H.profil || H.profil.id !== id) throw new Error("Oturum değişti. Sayfayı yenile.");
-        H.profil.aydinlatma = H.profil.aydinlatma || new Date().toISOString();
-        return H.profil;
-      });
+      return p;
     });
   }
   function profilAc(onay){
-    onay = onay === true;
+    onay = onay === true || !gizlilikGuncel();
     if (odlg.open || !H.profil) return;
-    var p = H.profil, don = hdlg.open, bekci = H.surum;
+    var p = H.profil, ilkOnay = !p.aydinlatma, don = hdlg.open, bekci = H.surum;
     if (hdlg.open) hdlg.close();
     H.bilgi = null;
-    document.getElementById("onay-t").textContent = onay ? "Bilgilerin ve gizlilik onayı" : p.ad_onaylandi ? "Bilgilerimi güncelle" : "Adını ve soyadını ekle";
+    document.getElementById("onay-t").textContent = onay ? ilkOnay ? "Bilgilerin ve gizlilik onayı" : "Gizlilik bildirimi güncellendi" : "Bilgilerimi güncelle";
     var g = document.getElementById("onay-ic"); g.textContent = "";
     var form = el("form"), alanlar = el("fieldset", "hs-profil"), adAlan = el("div", "field"), lab = el("label", null, "Ad soyad"), ad = el("input");
     ad.id = "profil-ad"; ad.type = "text"; ad.autocomplete = "name"; ad.maxLength = 80; ad.required = true;
@@ -2486,28 +2490,38 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
     var ipucu = el("small", "ts-ipucu", "Adını ve soyadını yaz. Soru-cevapta soyadının yalnız baş harfi görünür.");
     ipucu.id = "profil-ad-ipucu"; ad.setAttribute("aria-describedby", ipucu.id);
     ek(adAlan, lab, ad, ipucu);
-    var takim = takimAlani(p.takim), hata = el("p", "hata"); hata.hidden = true; hata.setAttribute("role", "alert");
-    function guncelle(){ kaydetB.disabled = !adSoyadGecerli(ad.value) || !takim.deger(); }
+    var linkedinAlan = el("div", "field"), linkedinLab = el("label", null, "LinkedIn profil adresi (isteğe bağlı)"), linkedin = el("input"), linkedinHata = el("small", "hata", "https://www.linkedin.com/in/... biçiminde bir profil adresi yaz.");
+    linkedin.id = "profil-linkedin"; linkedin.type = "url"; linkedin.maxLength = 300; linkedin.autocomplete = "url";
+    linkedin.placeholder = "https://www.linkedin.com/in/kullanici/"; linkedin.value = p.linkedin || ""; linkedinLab.htmlFor = linkedin.id;
+    var linkedinIpucu = el("small", "ts-ipucu", "Boş bırakabilirsin. Sen, yetkili takım mentorun ve yöneticiler görebilir.");
+    linkedinIpucu.id = "profil-linkedin-ipucu"; linkedinHata.id = "profil-linkedin-hata"; linkedinHata.hidden = true;
+    linkedin.setAttribute("aria-describedby", linkedinIpucu.id + " " + linkedinHata.id); ek(linkedinAlan, linkedinLab, linkedin, linkedinIpucu, linkedinHata);
+    var takim = takimAlani(p.takim), egitim = istegeBagliProfilAlanlari(p), hata = el("p", "hata"); hata.hidden = true; hata.setAttribute("role", "alert");
+    function guncelle(){
+      var gecerli = linkedinGecerli(linkedin.value); linkedinHata.hidden = gecerli;
+      linkedin.setCustomValidity(gecerli ? "" : linkedinHata.textContent); linkedin.setAttribute("aria-invalid", String(!gecerli));
+      kaydetB.disabled = !adSoyadGecerli(ad.value) || !takim.deger() || !gecerli || !egitim.gecerli();
+    }
     function vazgec(){
       odlg.close();
-      if (onay) { cikis(); return; }
+      if (onay && ilkOnay) { cikis(); return; }
       if (don && H.surum === bekci) { hesapIcerik(); hdlg.showModal(); }
     }
-    var kaydetB = dugme("btn", onay ? "Kaydet ve onayla" : "Kaydet"), vazgecB = dugme("btn ghost", onay ? "Çıkış yap" : don ? "Vazgeç" : "Sonra", vazgec);
+    var kaydetB = dugme("btn", onay ? ilkOnay ? "Kaydet ve onayla" : "Kaydet, bildirimi okudum" : "Kaydet"), vazgecB = dugme("btn ghost", onay && ilkOnay ? "Çıkış yap" : don ? "Vazgeç" : "Sonra", vazgec);
     kaydetB.type = "submit";
     if (onay) {
       var ul = el("ul"); GIZLILIK.ozet.forEach(function(x){ ul.appendChild(el("li", null, x)); });
-      ek(alanlar, el("p", null, "Hesabını kullanmadan önce bilgilerini tamamla ve verilerinin nasıl kullanıldığını oku."), ul);
+      ek(alanlar, el("p", null, ilkOnay ? "Bilgilerini kontrol et ve gizlilik metnini oku. Ek profil alanlarının tamamı isteğe bağlıdır." : "Yeni profil alanları isteğe bağlıdır. Takım kaptanı yalnız üyelerin adını, takım görevini ve departmanını görür. Yeni bilgileri doldurmak zorunda değilsin."), ul);
     }
-    ek(alanlar, adAlan, ek(el("p", "muted"), "E-posta: ", el("b", null, p.eposta || "Yok"), ". Google hesabından alınır."), takim);
+    ek(alanlar, adAlan, ek(el("p", "muted"), "E-posta: ", el("b", null, p.eposta || "Yok"), ". Google hesabından alınır."), takim, egitim.kutu, linkedinAlan);
     if (onay) alanlar.appendChild(ek(el("p", "muted"), "Kaydet ve onayla ile ", bag("#gizlilik", null, "gizlilik metnini", true), " okuduğunu onaylarsın."));
     ek(alanlar, hata, ek(el("div", "hs-dugmeler"), kaydetB, vazgecB));
     ek(g, ek(form, alanlar));
     form.addEventListener("submit", function(e){
       e.preventDefault();
-      if (alanlar.disabled || !adSoyadGecerli(ad.value) || !takim.deger()) return;
+      if (alanlar.disabled || !adSoyadGecerli(ad.value) || !takim.deger() || !linkedinGecerli(linkedin.value) || !egitim.gecerli()) return;
       alanlar.disabled = true; hata.hidden = true;
-      profilKaydet(ad.value, takim.deger(), onay).then(function(){
+      profilKaydet(ad.value, takim.deger(), onay, linkedin.value, egitim.deger()).then(function(){
         if (H.surum !== bekci || !H.profil || H.profil.id !== p.id) return;
         var acikti = odlg.open; odlg.close();
         H.bilgi = "Bilgilerin kaydedildi.";
@@ -2517,13 +2531,13 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
         alanlar.disabled = false; guncelle(); hata.hidden = false; hata.textContent = e.message;
       });
     });
-    ad.addEventListener("input", guncelle); takim.addEventListener("degisti", guncelle); guncelle();
+    ad.addEventListener("input", guncelle); takim.addEventListener("degisti", guncelle); linkedin.addEventListener("input", guncelle); egitim.kutu.addEventListener("input", guncelle); guncelle();
     odlg.showModal();
   }
 
   /* Gizlilik onayı aynı formda ad soyad ve takımla tamamlanır. */
   function onayAc(){
-    if (odlg.open || !H.profil || H.profil.aydinlatma) return;
+    if (odlg.open || !H.profil || gizlilikGuncel()) return;
     profilAc(true);
   }
 
@@ -2682,8 +2696,8 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
     function ciz(){
       kutu.textContent = "";
       var d = hesapDurumu();
-      if (d === "onay") ek(kutu, el("p", null, "Hesabın onay bekliyor."), dugme("btn", "Okudum, onaylıyorum", onayAc));
-      else if (d === "hazir") kutu.appendChild(el("p", "muted", "Bu metni onayladın. Hesabını Hesabım penceresinden silebilirsin."));
+      if (d === "onay" || (d === "hazir" && !gizlilikGuncel())) ek(kutu, el("p", null, "Güncel gizlilik bildirimi: " + GIZLILIK.tarih + "."), dugme("btn", "Bildirimi oku ve bilgilerini kontrol et", onayAc));
+      else if (d === "hazir") kutu.appendChild(el("p", "muted", "Güncel gizlilik bildirimini okuduğun kaydedildi. Hesabını gelişmiş hesap ayarlarından silebilirsin."));
       kutu.hidden = !kutu.firstChild;
     }
     yenileyiciler.push(ciz); ciz();
@@ -2977,7 +2991,7 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
       if (d !== "hazir") { ek(alan, el("p", "muted", H.hata || "Hesabın yükleniyor…")); return; }
       var id = kisi || H.profil.id, kendi = id === H.profil.id, bilgi = el("p", "muted", "Profil yükleniyor…"); alan.appendChild(bilgi);
       Promise.resolve(kendi ? gonder() : null).then(function(){ return kendi ? etkinlikYaz() : null; }).then(function(){
-        return api("rpc/uye_raporu", {p_kisi:id});
+        return api("rpc/profil_raporu", {p_kisi:id});
       }).then(function(r){
         if (!alan.isConnected) return;
         alan.textContent = "";
@@ -2986,11 +3000,14 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
         var moduller = W.filter(function(w){ return (!w.dal || w.dal === dal) && !(r.atla && w.faz === "prep"); }), yuzde = Math.round(tamam.length / moduller.length * 100);
         var kart = el("section", "pr-kimlik"), avatar = el("div", "pr-avatar"), dl = el("dl", "hs-bilgi");
         [["E-posta",p.eposta], ["Takım",p.takim || "Belirtilmedi"], ["Rol",ROL[p.rol]], ["Kayıt",gunYaz(p.olusturuldu)], ["Son görülme",tarihYaz(p.son_gorulme)]].forEach(function(x){ ek(dl, ek(el("div"), el("dt",null,x[0]),el("dd",null,x[1] || "—"))); });
+        profilEkBilgiler(dl,p);
+        if (p.linkedin && linkedinGecerli(p.linkedin)) dl.appendChild(ek(el("div"), el("dt",null,"LinkedIn"), ek(el("dd"),bag(linkedinMetni(p.linkedin),null,"Profili aç",true))));
         var ust = ek(el("div", "pr-kisi"), avatar, ek(el("div"),el("h2",null,p.ad || "Üye"),dl));
         ek(kart,ust);
         if (p.rol === "mentor") ek(kart,el("p","note","Yetkili olduğun takım: " + (p.mentor_takimi || "Henüz atanmadı") + ". Bu alanı yalnız yönetici değiştirir."));
         if (kendi) ek(kart,ek(el("div","hs-dugmeler"),dugme("btn sm","Bilgilerimi güncelle",function(){profilAc(false);}),bag("#harita","btn ghost sm","Yol haritama dön")), senkSatiri());
         else ek(kart,bag("#panel","btn ghost sm","Panele dön"));
+        if (kendi && p.takim_kaptani) kart.appendChild(bag("#takimim","btn ghost sm","Takım görevlerini yönet"));
         alan.appendChild(kart); fotografGoster(avatar,p); if (kendi) fotografDuzenle(kart,p,avatar);
         ek(alan,prSayilar([["Tamamlanan modül",tamam.length + " / " + moduller.length], ["İlerleme","%" + yuzde], ["Çözülen test",String(r.testler.length)], ["Gönderilen teslim",String(r.teslimler.length)]]));
         var etk = prBolum("Girişler ve etkinlik", "Siteye 30 dakika ara verdikten sonra dönmek yeni ziyaret sayılır. Kısa aralıklarla yenilemeler tek ziyaret sayılır.");
@@ -3008,6 +3025,7 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
         var tsb = prBolum("Teslimler ve geri bildirimler", "Gönderilen bağlantılar, araştırma cevapları ve inceleme durumu.");
         if (!r.teslimler.length) tsb.appendChild(el("p","muted","Henüz teslim yok."));
         r.teslimler.forEach(function(t){ t.kisi = p.id; tsb.appendChild(teslimKarti(t,p,kendi || !yetkiliMi())); }); alan.appendChild(tsb);
+        if (kendi) alan.appendChild(gelismisHesapAyarlari());
       },function(e){ if (!alan.isConnected) return; bilgi.className="hata"; bilgi.textContent=e.message; alan.appendChild(dugme("btn ghost sm","Tekrar dene",ciz)); });
     }
     function yenile(){ var k = hesapDurumu()+"|"+(H.profil ? H.profil.id+"|"+H.profil.rol : ""); if(k!==anahtar){anahtar=k;ciz();} }
@@ -3021,6 +3039,7 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
       l.forEach(function(t){
         var k=prBolum(t.takim,"Üyelerin kendi rotalarındaki ilerleme ortalaması. Python hazırlığını atlayanlarda 23, diğerlerinde 27 modül sayılır.");
         ek(k,prSayilar([["Kişi",String(t.kisi)],["Ortalama ilerleme","%"+t.ilerleme],["Aktif kişi, 30 gün",String(t.aktif30)],["Teslim / bekleyen",t.teslim+" / "+t.bekleyen],["En iyi test ortalaması",t.test_yuzde == null ? "—" : "%"+t.test_yuzde]]),dugme("btn ghost sm","Üyeleri göster",function(){detay.textContent=""; panelUye(detay,t.takim); detay.scrollIntoView({behavior:"smooth",block:"start"});}));liste.appendChild(k);
+        if(H.profil.rol === "admin" && takimBuyut(t.takim).replace(/[^A-Z0-9]/g,"") !== "BAGIMSIZ" && t.takim !== "Takım belirtilmedi") k.appendChild(dugme("btn ghost sm","Kaptan ve takım görevleri",function(){detay.textContent="";takimGorevleriKutusu(detay,t.takim);detay.scrollIntoView({behavior:"smooth",block:"start"});}));
       });
     },function(e){bilgi.className="hata";bilgi.textContent=e.message;});
   }
@@ -3429,6 +3448,7 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
     if (t === "gizlilik") { gizlilikSayfasi(); return window.scrollTo(0, 0); }
     if (t === "panel") { panelSayfasi(); return window.scrollTo(0, 0); }
     if (t === "profil") { profilSayfasi(); return window.scrollTo(0, 0); }
+    if (t === "takimim") { takimimSayfasi(); return window.scrollTo(0, 0); }
     if (/^uye-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(t)) { profilSayfasi(t.slice(4)); return window.scrollTo(0, 0); }
     if (t === "sorular") { soruSayfasi(); return window.scrollTo(0, 0); }
     if (t === "kutuphane") { kutuphaneSayfasi(); return window.scrollTo(0, 0); }
@@ -3452,6 +3472,112 @@ var WA_QR = "<svg aria-hidden=\"true\" shape-rendering=\"crispEdges\" version=\"
   ziyaretSay();
   rota();
   if (H.hata && !H.oturum) { hesapIcerik(); hdlg.showModal(); }   /* Google'dan hatayla dönüldü */
+  function gelismisHesapAyarlari(){
+    var ayarlar = ek(el("details", "hs-gelismis"), el("summary", null, "Gelişmiş hesap ayarları"));
+    var sil = ek(el("div", "hs-sil"), el("p", "muted", "Hesabını silince profilin, ilerlemen, test sonuçların, soruların, cevapların ve teslimlerin kalıcı olarak silinir."));
+    var hata = el("p", "hata"); hata.hidden = true; hata.setAttribute("role", "alert");
+    var soru = el("div", "hs-onay"); soru.hidden = true;
+    var acB = dugme("btn ghost sm tehlike", "Hesabımı sil", function(){ soru.hidden = false; acB.hidden = true; evet.focus(); });
+    var evet = dugme("btn sm", "Evet, hesabımı sil", function(){
+      evet.disabled = true; hata.hidden = true;
+      fotografSil().then(function(){ return api("rpc/hesabimi_sil", {}); }).then(function(){
+        yerelCikis(); hdlg.close();
+      }, function(e){ evet.disabled = false; hata.hidden = false; hata.textContent = e.message; });
+    });
+    ek(soru, el("p", null, "Emin misin? Bu işlem geri alınamaz."), ek(el("div", "hs-dugmeler"), evet, dugme("btn ghost sm", "Vazgeç", function(){ soru.hidden = true; acB.hidden = false; acB.focus(); })));
+    ek(sil, acB, soru, hata); ayarlar.appendChild(sil); return ayarlar;
+  }
+  function linkedinMetni(s){
+    var metin = String(s || "").trim();
+    if (!metin) return null;
+    var u;
+    try { u = new URL(metin); } catch (e) { throw new Error("Geçerli bir LinkedIn profil adresi yaz."); }
+    if (u.protocol !== "https:" || !/^(www\.)?linkedin\.com$/.test(u.hostname) || u.username || u.password || u.port ||
+        !/^\/in\/(?:[A-Za-z0-9._-]|%[0-9A-Fa-f]{2})+\/?$/.test(u.pathname)) throw new Error("https://www.linkedin.com/in/... biçiminde bir profil adresi yaz.");
+    var adres = "https://www.linkedin.com" + u.pathname.replace(/\/$/, "") + "/";
+    if (adres.length > 300) throw new Error("LinkedIn adresi en fazla 300 karakter olabilir.");
+    return adres;
+  }
+  function linkedinGecerli(s){ try { linkedinMetni(s); return true; } catch (e) { return false; } }
+  function gizlilikGuncel(){ return !!(H.profil && H.profil.aydinlatma && H.profil.gizlilik_surumu >= GIZLILIK.surum); }
+  function egitimSecenekleri(){ return [["","Belirtmek istemiyorum"],["lise","Lise"],["on_lisans","Ön lisans"],["lisans","Lisans"],["lisansustu","Lisansüstü"],["mezun","Mezun"],["diger","Diğer"]]; }
+  function istegeBagliProfilAlanlari(p){
+    var kutu = el("div", "hs-ek-profil"), alanlar = {};
+    ek(kutu, el("h3", null, "Ek profil bilgileri"), el("p", "muted", "Bu alanların tamamı isteğe bağlıdır. Boş bırakabilir veya sonradan kaldırabilirsin. Takım kaptanına gösterilmez."));
+    [["kullanici_adi","Kullanıcı adı",30,"enes.d"],["egitim_durumu","Eğitim durumu"],["okul","Okul",160,"Okul veya üniversite adı"],["bolum","Bölüm / alan",120,"Örneğin bilgisayar mühendisliği veya sayısal"],["sinif","Sınıf / öğrenim yılı",40,"Örneğin 11. sınıf, hazırlık, 2. sınıf veya mezun"]].forEach(function(x){
+      var f=el("div","field"), l=el("label",null,x[1]+" (isteğe bağlı)"), i=el(x[0]==="egitim_durumu"?"select":"input");
+      i.id="profil-"+x[0]; l.htmlFor=i.id;
+      if(x[0]==="egitim_durumu") egitimSecenekleri().forEach(function(v){var o=el("option",null,v[1]);o.value=v[0];i.appendChild(o);});
+      else {i.type="text";i.maxLength=x[2];i.placeholder=x[3];i.autocomplete=x[0]==="kullanici_adi"?"nickname":"off";}
+      i.value=p[x[0]] || ""; alanlar[x[0]]=i; ek(f,l,i); kutu.appendChild(f);
+    });
+    var kullanici=alanlar.kullanici_adi, ipucu=el("small","ts-ipucu","3–30 karakter. Harfle başlar; harf, rakam, nokta, tire ve alt çizgi kullanılabilir.");
+    kullanici.parentNode.appendChild(ipucu);
+    kullanici.addEventListener("input",function(){kullanici.value=takimBuyut(kullanici.value).toLowerCase(); kullanici.setCustomValidity(!kullanici.value || /^[a-z][a-z0-9_.-]{2,29}$/.test(kullanici.value)?"":"Kullanıcı adını kontrol et.");});
+    return {kutu:kutu,gecerli:function(){return !kullanici.value || /^[a-z][a-z0-9_.-]{2,29}$/.test(kullanici.value);},deger:function(){var v={};Object.keys(alanlar).forEach(function(k){v[k]=alanlar[k].value.trim() || null;});return v;}};
+  }
+  function profilEkBilgiler(dl,p){
+    var etiket={}; egitimSecenekleri().forEach(function(x){etiket[x[0]]=x[1];});
+    [["Kullanıcı adı",p.kullanici_adi],["Eğitim durumu",etiket[p.egitim_durumu]],["Okul",p.okul],["Bölüm / alan",p.bolum],["Sınıf / öğrenim yılı",p.sinif],["Takım görevi",p.takim && p.takim!==BAGIMSIZ?p.takim_gorevi:null],["Departman",p.takim_departmani]].forEach(function(x){if(x[1])dl.appendChild(ek(el("div"),el("dt",null,x[0]),el("dd",null,x[1])));});
+  }
+  function takimGorevleriKutusu(alan,takim){
+    var admin=H.profil && H.profil.rol === "admin", sayfaNo=0, sira=0;
+    var baslik=el("h2",null,takim+" — takım görevleri"), bilgi=el("p","muted"), sonuc=el("p","muted"), onayAlani=el("div","tk-atama-onayi"), kaptan=el("div"), liste=el("div"), alt=el("div","hs-dugmeler");
+    onayAlani.hidden=true;
+    sonuc.setAttribute("role","status");
+    var once=dugme("btn ghost sm","Önceki",function(){sayfaNo--;yukle();}), sonra=dugme("btn ghost sm","Sonraki",function(){sayfaNo++;yukle();});
+    ek(alan,baslik,el("p","note","Takım görevleri Akademi yetkilerini değiştirmez. Kaptan yalnız kendi takımındaki görev ve departmanları düzenler. Üyeler takım adını kendileri belirtir."),bilgi,sonuc,onayAlani,kaptan,liste,ek(alt,once,sonra));
+    function hata(e){sonuc.className="hata";sonuc.textContent=e.message;}
+    function ata(id,ad,btn){
+      onayAlani.textContent="";onayAlani.hidden=false;
+      var evet=dugme("btn sm",id?"Evet, kaptan olarak belirle":"Evet, kaptanlığı kaldır",function(){
+        evet.disabled=vazgec.disabled=btn.disabled=true;sonuc.className="muted";sonuc.textContent="Kaydediliyor…";
+        api("rpc/takim_kaptani_ata",{p_takim:takim,p_kisi:id}).then(function(){onayAlani.hidden=true;sonuc.textContent="Kaptan kaydedildi.";yukle();},function(e){evet.disabled=vazgec.disabled=btn.disabled=false;hata(e);});
+      });
+      var vazgec=dugme("btn ghost sm","Vazgeç",function(){onayAlani.hidden=true;btn.focus();});
+      ek(onayAlani,el("p",null,id ? ad+" bu takımın kaptanı olsun mu? Önceki kaptanın görev düzenleme yetkisi kalkar." : "Bu takımın kaptanlığı kaldırılsın mı?"),ek(el("div","hs-dugmeler"),evet,vazgec));
+      evet.focus();
+    }
+    function yukle(){
+      var bekci=++sira;bilgi.className="muted";bilgi.textContent="Takım üyeleri yükleniyor…";liste.textContent="";kaptan.textContent="";once.disabled=sonra.disabled=true;
+      api("rpc/takim_gorev_listesi",{p_takim:takim,p_sayfa:sayfaNo}).then(function(r){
+        if(bekci!==sira || !alan.isConnected)return;
+        bilgi.textContent=r.toplam+" kişi. Sayfa "+(sayfaNo+1)+" / "+Math.max(1,Math.ceil(r.toplam/50))+".";
+        kaptan.appendChild(el("p",null,"Kaptan: "+(r.kaptan?r.kaptan.ad:"Henüz belirlenmedi")));
+        if(admin && r.kaptan){var kaldir=dugme("btn ghost sm","Kaptanlığı kaldır",function(){ata(null,"",kaldir);});kaptan.appendChild(kaldir);}
+        once.disabled=sayfaNo===0;sonra.disabled=(sayfaNo+1)*50>=r.toplam;
+        if(!r.satirlar.length){liste.appendChild(el("p","muted","Bu takımda üye yok."));return;}
+        liste.appendChild(tablo(["Üye","Görev ve departman","Kaptanlık"],r.satirlar.map(function(p){
+          var form=el("form","tk-gorev-form"), fs=el("fieldset"), gorev=el("input"), dep=el("input"), durum=el("span","muted");
+          gorev.type=dep.type="text";gorev.maxLength=dep.maxLength=80;gorev.value=p.kaptan?"Kaptan":p.gorev || "Takım üyesi";gorev.disabled=p.kaptan;
+          dep.value=p.departman || "";dep.placeholder="Örneğin yazılım";gorev.placeholder="Örneğin yazılım bölümü başkanı";
+          gorev.id="tk-gorev-"+(++takimNo);dep.id="tk-dep-"+(++takimNo);
+          var gl=el("label",null,"Takım görevi"),dl=el("label",null,"Departman (isteğe bağlı)");gl.htmlFor=gorev.id;dl.htmlFor=dep.id;
+          var btn=dugme("btn ghost sm","Kaydet");btn.type="submit";durum.setAttribute("role","status");
+          ek(fs,ek(el("div","field"),gl,gorev),ek(el("div","field"),dl,dep),btn,durum);form.appendChild(fs);
+          form.addEventListener("submit",function(e){e.preventDefault();if(fs.disabled)return;fs.disabled=true;durum.className="muted";durum.textContent="Kaydediliyor…";
+            api("rpc/takim_gorevi_kaydet",{p_takim:takim,p_kisi:p.id,p_gorev:p.kaptan?"Takım üyesi":gorev.value.trim(),p_departman:dep.value.trim() || null}).then(function(){durum.textContent="Kaydedildi.";},function(e){durum.className="hata";durum.textContent=e.message;}).finally(function(){fs.disabled=false;});
+          });
+          var islem=el("div");
+          if(p.kaptan)islem.appendChild(el("b",null,"Kaptan"));
+          else if(admin){var atab=dugme("btn ghost sm","Kaptan yap",function(){ata(p.id,p.ad,atab);});islem.appendChild(atab);}
+          return [p.ad || "Üye",form,islem];
+        })));
+      },function(e){if(bekci!==sira || !alan.isConnected)return;bilgi.className="hata";bilgi.textContent=e.message;liste.appendChild(dugme("btn ghost sm","Tekrar dene",yukle));});
+    }
+    yukle();
+  }
+  function takimimSayfasi(){
+    var v=sayfa("takimim"), alan=el("div"), anahtar=null;
+    ek(v,ek(el("header","ph"),el("span","eyebrow","Takımım"),el("h1",null,"Takım görevleri")),alan);
+    function yenile(){
+      var k=hesapDurumu()+"|"+(H.profil?H.profil.id+"|"+H.profil.takim:"");if(k===anahtar)return;anahtar=k;alan.textContent="";
+      if(hesapDurumu()!=="hazir"){ek(alan,el("p","muted","Takım görevlerini görmek için giriş yap ve gizlilik bildirimini tamamla."),H.oturum?dugme("btn","Bilgilerimi tamamla",onayAc):girisDugmesi());return;}
+      if(!H.profil.takim || H.profil.takim===BAGIMSIZ){alan.appendChild(el("p","muted","Bağımsız olarak öğrenmeye devam edebilirsin. Bir takıma katılman gerekmez."));return;}
+      takimGorevleriKutusu(alan,H.profil.takim);
+    }
+    yenileyiciler.push(yenile);yenile();
+  }
 })();
 
 </script>
